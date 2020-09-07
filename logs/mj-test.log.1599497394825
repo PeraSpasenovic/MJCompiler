@@ -1,0 +1,30 @@
+INFO  18:49:16,051 - Compiling source file: C:\Users\Pera\eclipse-workspace\MJCompiler\test\program.mj
+INFO  18:49:16,081 - #2 program
+INFO  18:49:16,081 - #45 MJProgram
+INFO  18:49:16,081 - #45 int
+INFO  18:49:16,082 - #45 x
+INFO  18:49:16,083 - #5 ;
+INFO  18:49:16,083 - #45 int
+INFO  18:49:16,084 - #45 y
+INFO  18:49:16,084 - #5 ;
+INFO  18:49:16,084 - #16 const
+INFO  18:49:16,084 - #45 char
+INFO  18:49:16,085 - #45 pera
+INFO  18:49:16,085 - #11 =
+INFO  18:49:16,085 - #47 p
+INFO  18:49:16,085 - #5 ;
+INFO  18:49:16,085 - #14 class
+INFO  18:49:16,086 - #45 Tim
+INFO  18:49:16,086 - #3 {
+INFO  18:49:16,087 - #45 int
+INFO  18:49:16,087 - #45 hardver
+INFO  18:49:16,088 - #5 ;
+INFO  18:49:16,088 - #45 int
+INFO  18:49:16,093 - #45 softver
+INFO  18:49:16,093 - #5 ;
+INFO  18:49:16,093 - #45 int
+INFO  18:49:16,093 - #45 pcb
+INFO  18:49:16,093 - #6 (
+ERROR 18:49:16,094 - 
+Sintaksna greska na liniji 9
+ERROR 18:49:16,094 - Fatalna greska, parsiranje se ne moze nastaviti na liniji 9

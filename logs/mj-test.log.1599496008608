@@ -1,0 +1,16 @@
+INFO  18:22:24,911 - Compiling source file: C:\Users\Pera\eclipse-workspace\MJCompiler\test\program.mj
+INFO  18:22:24,952 - #2 program
+INFO  18:22:24,952 - #45 MJProgram
+INFO  18:22:24,953 - #45 int
+INFO  18:22:24,954 - #45 x
+INFO  18:22:24,955 - #5 ;
+INFO  18:22:24,956 - #45 int
+INFO  18:22:24,957 - #45 y
+INFO  18:22:24,957 - #5 ;
+INFO  18:22:24,957 - #16 const
+INFO  18:22:24,957 - #45 char
+INFO  18:22:24,957 - #45 pera
+INFO  18:22:24,957 - #5 ;
+ERROR 18:22:24,957 - 
+Sintaksna greska na liniji 3
+ERROR 18:22:24,957 - Fatalna greska, parsiranje se ne moze nastaviti na liniji 3

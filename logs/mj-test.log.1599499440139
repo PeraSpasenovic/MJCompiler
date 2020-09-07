@@ -1,0 +1,19 @@
+INFO  19:07:38,609 - Compiling source file: C:\Users\Pera\eclipse-workspace\MJCompiler\test\program.mj
+INFO  19:07:38,681 - #2 program
+INFO  19:07:38,681 - #45 MJProgram
+INFO  19:07:38,681 - #45 int
+INFO  19:07:38,684 - #45 x
+INFO  19:07:38,685 - #5 ;
+INFO  19:07:38,685 - #45 int
+INFO  19:07:38,686 - #45 y
+INFO  19:07:38,686 - #5 ;
+INFO  19:07:38,686 - #16 const
+INFO  19:07:38,687 - #45 char
+INFO  19:07:38,687 - #45 pera
+INFO  19:07:38,687 - #11 =
+INFO  19:07:38,687 - #47 p
+INFO  19:07:38,687 - #5 ;
+INFO  19:07:38,688 - #15 abstract
+ERROR 19:07:38,688 - 
+Sintaksna greska na liniji 5
+ERROR 19:07:38,688 - Fatalna greska, parsiranje se ne moze nastaviti na liniji 5

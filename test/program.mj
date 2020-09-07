@@ -1,0 +1,32 @@
+program MJProgram
+	int x; int y;
+	const char pera = 'p';
+	
+	abstract class Tim extends Nesto {
+		int hardver;
+		int softver;
+		
+		{
+			int pcb () {
+				hardver = 2;
+				softver = 1;
+			}
+			
+			abstract void fja (int m);
+		}
+	}
+{
+	
+	int k () int c; {
+		c = 1;
+		return c+2;
+	}
+	
+	int main() {
+		y = 2;
+		x = y + 2;
+		y = k() + 3;
+		print(y);
+		return 0;
+	}
+}
