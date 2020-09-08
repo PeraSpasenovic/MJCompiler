@@ -3,13 +3,11 @@ package rs.ac.bg.etf.pp1;
 import rs.ac.bg.etf.pp1.CounterVisitor.FormParamCounter;
 import rs.ac.bg.etf.pp1.CounterVisitor.VarCounter;
 import rs.ac.bg.etf.pp1.ast.AddExpr;
-import rs.ac.bg.etf.pp1.ast.Assignment;
-import rs.ac.bg.etf.pp1.ast.Const;
 import rs.ac.bg.etf.pp1.ast.Designator;
 import rs.ac.bg.etf.pp1.ast.FormalParamDecl;
-import rs.ac.bg.etf.pp1.ast.FuncCall;
 import rs.ac.bg.etf.pp1.ast.MethodDecl;
 import rs.ac.bg.etf.pp1.ast.MethodTypeName;
+import rs.ac.bg.etf.pp1.ast.NumFactor;
 import rs.ac.bg.etf.pp1.ast.PrintStmt;
 import rs.ac.bg.etf.pp1.ast.ReturnExpr;
 import rs.ac.bg.etf.pp1.ast.ReturnNoExpr;
@@ -79,31 +77,23 @@ public class CodeGenerator extends VisitorAdaptor {
 		Code.put(Code.return_);
 	}
 	
-	@Override
-	public void visit(Assignment Assignment) {
-		Code.store(Assignment.getDesignator().obj);
-	}
+//	@Override
+//	public void visit(Assignment Assignment) {
+//		Code.store(Assignment.getDesignator().obj);
+//	}
 	
 	@Override
-	public void visit(Const Const) {
-		Code.load(new Obj(Obj.Con, "$", Const.struct, Const.getN1(), 0));
+	public void visit(NumFactor NumFactor) {
+		Code.load(new Obj(Obj.Con, "$", NumFactor.struct, NumFactor.getConstVal(), 0));
 	}
 	
-	@Override
-	public void visit(Designator Designator) {
-		SyntaxNode parent = Designator.getParent();
-		if (Assignment.class != parent.getClass() && FuncCall.class != parent.getClass()) {
-			Code.load(Designator.obj);
-		}
-	}
-	
-	@Override
-	public void visit(FuncCall FuncCall) {
-		Obj functionObj = FuncCall.getDesignator().obj;
-		int offset = functionObj.getAdr() - Code.pc; 
-		Code.put(Code.call);
-		Code.put2(offset);
-	}
+//	@Override
+//	public void visit(Designator Designator) {
+//		SyntaxNode parent = Designator.getParent();
+//		if (Assignment.class != parent.getClass() && FuncCall.class != parent.getClass()) {
+//			Code.load(Designator.obj);
+//		}
+//	}
 	
 	@Override
 	public void visit(PrintStmt PrintStmt) {

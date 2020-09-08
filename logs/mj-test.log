@@ -1,108 +1,103 @@
-INFO  19:52:25,610 - Compiling source file: C:\Users\Pera\eclipse-workspace\MJCompiler\test\program.mj
-INFO  19:52:25,644 - #2 program
-INFO  19:52:25,645 - #45 MJProgram
-INFO  19:52:25,645 - #45 int
-INFO  19:52:25,646 - #45 x
-INFO  19:52:25,647 - #5 ;
-INFO  19:52:25,647 - #45 int
-INFO  19:52:25,648 - #45 y
-INFO  19:52:25,648 - #5 ;
-INFO  19:52:25,648 - #16 const
-INFO  19:52:25,648 - #45 char
-INFO  19:52:25,648 - #45 pera
-INFO  19:52:25,648 - #11 =
-INFO  19:52:25,648 - #47 p
-INFO  19:52:25,648 - #5 ;
-INFO  19:52:25,649 - #15 abstract
-INFO  19:52:25,649 - #14 class
-INFO  19:52:25,649 - #45 Tim
-INFO  19:52:25,650 - #20 extends
-INFO  19:52:25,650 - #45 Nesto
-INFO  19:52:25,650 - #3 {
-INFO  19:52:25,650 - #45 int
-INFO  19:52:25,651 - #45 hardver
-INFO  19:52:25,651 - #5 ;
-INFO  19:52:25,651 - #45 int
-INFO  19:52:25,652 - #45 softver
-INFO  19:52:25,652 - #5 ;
-INFO  19:52:25,652 - #3 {
-INFO  19:52:25,652 - #45 int
-INFO  19:52:25,652 - #45 pcb
-INFO  19:52:25,652 - #6 (
-INFO  19:52:25,653 - #7 )
-INFO  19:52:25,653 - #3 {
-INFO  19:52:25,653 - #45 hardver
-INFO  19:52:25,654 - #11 =
-INFO  19:52:25,655 - #44 2
-INFO  19:52:25,655 - #5 ;
-INFO  19:52:25,656 - #45 softver
-INFO  19:52:25,656 - #11 =
-INFO  19:52:25,656 - #44 1
-INFO  19:52:25,656 - #5 ;
-INFO  19:52:25,656 - #4 }
-INFO  19:52:25,656 - #15 abstract
-INFO  19:52:25,657 - #12 void
-INFO  19:52:25,657 - #45 fja
-INFO  19:52:25,658 - #6 (
-INFO  19:52:25,658 - #45 int
-INFO  19:52:25,658 - #45 m
-INFO  19:52:25,658 - #7 )
-INFO  19:52:25,659 - #5 ;
-INFO  19:52:25,659 - #4 }
-INFO  19:52:25,660 - #4 }
-INFO  19:52:25,660 - #3 {
-INFO  19:52:25,661 - #45 int
-INFO  19:52:25,662 - #45 k
-INFO  19:52:25,662 - #6 (
-INFO  19:52:25,662 - #7 )
-INFO  19:52:25,662 - #45 int
-INFO  19:52:25,662 - #45 c
-INFO  19:52:25,662 - #5 ;
-INFO  19:52:25,663 - #3 {
-INFO  19:52:25,663 - #45 c
-INFO  19:52:25,663 - #11 =
-INFO  19:52:25,663 - #44 1
-INFO  19:52:25,663 - #5 ;
-INFO  19:52:25,663 - #10 return
-INFO  19:52:25,663 - #45 c
-INFO  19:52:25,663 - #22 +
-INFO  19:52:25,663 - #44 2
-INFO  19:52:25,672 - #5 ;
-INFO  19:52:25,673 - #4 }
-INFO  19:52:25,673 - #45 int
-INFO  19:52:25,673 - #45 main
-INFO  19:52:25,673 - #6 (
-INFO  19:52:25,673 - #7 )
-INFO  19:52:25,673 - #3 {
-INFO  19:52:25,673 - #45 y
-INFO  19:52:25,673 - #11 =
-INFO  19:52:25,674 - #44 2
-INFO  19:52:25,674 - #5 ;
-INFO  19:52:25,674 - #45 x
-INFO  19:52:25,674 - #11 =
-INFO  19:52:25,674 - #45 y
-INFO  19:52:25,674 - #22 +
-INFO  19:52:25,674 - #44 2
-INFO  19:52:25,674 - #5 ;
-INFO  19:52:25,674 - #45 y
-INFO  19:52:25,674 - #11 =
-INFO  19:52:25,674 - #45 k
-INFO  19:52:25,674 - #6 (
-INFO  19:52:25,674 - #7 )
-INFO  19:52:25,675 - #22 +
-INFO  19:52:25,675 - #44 3
-INFO  19:52:25,675 - #5 ;
-INFO  19:52:25,676 - #9 print
-INFO  19:52:25,676 - #6 (
-INFO  19:52:25,676 - #45 y
-INFO  19:52:25,676 - #7 )
-INFO  19:52:25,676 - #5 ;
-INFO  19:52:25,676 - #10 return
-INFO  19:52:25,676 - #44 0
-INFO  19:52:25,676 - #5 ;
-INFO  19:52:25,676 - #4 }
-INFO  19:52:25,676 - #4 }
-INFO  19:52:25,679 - Program(
+INFO  03:47:13,122 - Compiling source file: C:\Users\Pera\eclipse-workspace\MJCompiler\test\program.mj
+INFO  03:47:13,141 - #2 program
+INFO  03:47:13,141 - #45 MJProgram
+INFO  03:47:13,141 - #45 int
+INFO  03:47:13,142 - #45 x
+INFO  03:47:13,142 - #5 ;
+INFO  03:47:13,142 - #45 int
+INFO  03:47:13,143 - #45 y
+INFO  03:47:13,143 - #5 ;
+INFO  03:47:13,143 - #16 const
+INFO  03:47:13,143 - #45 char
+INFO  03:47:13,143 - #45 pera
+INFO  03:47:13,143 - #11 =
+INFO  03:47:13,143 - #47 p
+INFO  03:47:13,143 - #5 ;
+INFO  03:47:13,143 - #15 abstract
+INFO  03:47:13,144 - #14 class
+INFO  03:47:13,144 - #45 Tim
+INFO  03:47:13,144 - #20 extends
+INFO  03:47:13,144 - #45 Nesto
+INFO  03:47:13,144 - #3 {
+INFO  03:47:13,144 - #45 int
+INFO  03:47:13,145 - #45 hardver
+INFO  03:47:13,145 - #5 ;
+INFO  03:47:13,145 - #45 int
+INFO  03:47:13,145 - #45 softver
+INFO  03:47:13,145 - #5 ;
+INFO  03:47:13,145 - #3 {
+INFO  03:47:13,145 - #45 int
+INFO  03:47:13,145 - #45 pcb
+INFO  03:47:13,145 - #6 (
+INFO  03:47:13,145 - #7 )
+INFO  03:47:13,146 - #3 {
+INFO  03:47:13,146 - #45 hardver
+INFO  03:47:13,146 - #11 =
+INFO  03:47:13,146 - #44 2
+INFO  03:47:13,147 - #5 ;
+INFO  03:47:13,147 - #45 softver
+INFO  03:47:13,147 - #11 =
+INFO  03:47:13,147 - #44 1
+INFO  03:47:13,147 - #5 ;
+INFO  03:47:13,147 - #4 }
+INFO  03:47:13,147 - #15 abstract
+INFO  03:47:13,148 - #12 void
+INFO  03:47:13,148 - #45 fja
+INFO  03:47:13,148 - #6 (
+INFO  03:47:13,148 - #45 int
+INFO  03:47:13,148 - #45 m
+INFO  03:47:13,148 - #7 )
+INFO  03:47:13,148 - #5 ;
+INFO  03:47:13,148 - #4 }
+INFO  03:47:13,149 - #4 }
+INFO  03:47:13,149 - #3 {
+INFO  03:47:13,149 - #45 int
+INFO  03:47:13,150 - #45 k
+INFO  03:47:13,150 - #6 (
+INFO  03:47:13,150 - #7 )
+INFO  03:47:13,150 - #45 int
+INFO  03:47:13,150 - #45 c
+INFO  03:47:13,150 - #5 ;
+INFO  03:47:13,150 - #3 {
+INFO  03:47:13,150 - #45 c
+INFO  03:47:13,150 - #11 =
+INFO  03:47:13,150 - #44 1
+INFO  03:47:13,150 - #5 ;
+INFO  03:47:13,150 - #10 return
+INFO  03:47:13,150 - #45 c
+INFO  03:47:13,150 - #22 +
+INFO  03:47:13,150 - #44 2
+INFO  03:47:13,151 - #5 ;
+INFO  03:47:13,151 - #4 }
+INFO  03:47:13,151 - #45 int
+INFO  03:47:13,151 - #45 main
+INFO  03:47:13,151 - #6 (
+INFO  03:47:13,151 - #7 )
+INFO  03:47:13,151 - #3 {
+INFO  03:47:13,151 - #45 y
+INFO  03:47:13,151 - #11 =
+INFO  03:47:13,151 - #44 2
+INFO  03:47:13,151 - #5 ;
+INFO  03:47:13,151 - #45 x
+INFO  03:47:13,151 - #11 =
+INFO  03:47:13,151 - #45 y
+INFO  03:47:13,152 - #22 +
+INFO  03:47:13,152 - #44 2
+INFO  03:47:13,152 - #5 ;
+INFO  03:47:13,152 - #45 y
+INFO  03:47:13,152 - #40 ++
+INFO  03:47:13,152 - #5 ;
+INFO  03:47:13,152 - #9 print
+INFO  03:47:13,152 - #6 (
+INFO  03:47:13,152 - #45 y
+INFO  03:47:13,152 - #7 )
+INFO  03:47:13,152 - #5 ;
+INFO  03:47:13,152 - #10 return
+INFO  03:47:13,152 - #44 0
+INFO  03:47:13,152 - #5 ;
+INFO  03:47:13,152 - #4 }
+INFO  03:47:13,152 - #4 }
+INFO  03:47:13,153 - Program(
   ProgName(
    MJProgram
   ) [ProgName]
@@ -181,35 +176,39 @@ INFO  19:52:25,679 - Program(
                 Statements(
                   NoStmt(
                   ) [NoStmt]
-                  MatchedStmt(
-                    Assignment(
+                  DesignatorStmt(
+                    DesignatorAssign(
                       Designator(
                        hardver
                       ) [Designator]
+                      Equals(
+                      ) [Equals]
                       TermExpr(
-                        Term(
-                          Const(
+                        FactorTerm(
+                          NumFactor(
                            2
-                          ) [Const]
-                        ) [Term]
+                          ) [NumFactor]
+                        ) [FactorTerm]
                       ) [TermExpr]
-                    ) [Assignment]
-                  ) [MatchedStmt]
+                    ) [DesignatorAssign]
+                  ) [DesignatorStmt]
                 ) [Statements]
-                MatchedStmt(
-                  Assignment(
+                DesignatorStmt(
+                  DesignatorAssign(
                     Designator(
                      softver
                     ) [Designator]
+                    Equals(
+                    ) [Equals]
                     TermExpr(
-                      Term(
-                        Const(
+                      FactorTerm(
+                        NumFactor(
                          1
-                        ) [Const]
-                      ) [Term]
+                        ) [NumFactor]
+                      ) [FactorTerm]
                     ) [TermExpr]
-                  ) [Assignment]
-                ) [MatchedStmt]
+                  ) [DesignatorAssign]
+                ) [DesignatorStmt]
               ) [Statements]
             ) [MethodDecl]
           ) [SingleAnyMethodReg]
@@ -259,43 +258,45 @@ INFO  19:52:25,679 - Program(
           Statements(
             NoStmt(
             ) [NoStmt]
-            MatchedStmt(
-              Assignment(
+            DesignatorStmt(
+              DesignatorAssign(
                 Designator(
                  c
                 ) [Designator]
+                Equals(
+                ) [Equals]
                 TermExpr(
-                  Term(
-                    Const(
+                  FactorTerm(
+                    NumFactor(
                      1
-                    ) [Const]
-                  ) [Term]
+                    ) [NumFactor]
+                  ) [FactorTerm]
                 ) [TermExpr]
-              ) [Assignment]
-            ) [MatchedStmt]
+              ) [DesignatorAssign]
+            ) [DesignatorStmt]
           ) [Statements]
-          MatchedStmt(
+          ReturnStmt(
             ReturnExpr(
               AddExpr(
                 TermExpr(
-                  Term(
-                    Var(
+                  FactorTerm(
+                    VarFactor(
                       Designator(
                        c
                       ) [Designator]
-                    ) [Var]
-                  ) [Term]
+                    ) [VarFactor]
+                  ) [FactorTerm]
                 ) [TermExpr]
-                Addop(
-                ) [Addop]
-                Term(
-                  Const(
+                Add(
+                ) [Add]
+                FactorTerm(
+                  NumFactor(
                    2
-                  ) [Const]
-                ) [Term]
+                  ) [NumFactor]
+                ) [FactorTerm]
               ) [AddExpr]
             ) [ReturnExpr]
-          ) [MatchedStmt]
+          ) [ReturnStmt]
         ) [Statements]
       ) [MethodDecl]
     ) [MethodDeclarations]
@@ -317,105 +318,89 @@ INFO  19:52:25,679 - Program(
               Statements(
                 NoStmt(
                 ) [NoStmt]
-                MatchedStmt(
-                  Assignment(
+                DesignatorStmt(
+                  DesignatorAssign(
                     Designator(
                      y
                     ) [Designator]
+                    Equals(
+                    ) [Equals]
                     TermExpr(
-                      Term(
-                        Const(
+                      FactorTerm(
+                        NumFactor(
                          2
-                        ) [Const]
-                      ) [Term]
+                        ) [NumFactor]
+                      ) [FactorTerm]
                     ) [TermExpr]
-                  ) [Assignment]
-                ) [MatchedStmt]
+                  ) [DesignatorAssign]
+                ) [DesignatorStmt]
               ) [Statements]
-              MatchedStmt(
-                Assignment(
+              DesignatorStmt(
+                DesignatorAssign(
                   Designator(
                    x
                   ) [Designator]
+                  Equals(
+                  ) [Equals]
                   AddExpr(
                     TermExpr(
-                      Term(
-                        Var(
+                      FactorTerm(
+                        VarFactor(
                           Designator(
                            y
                           ) [Designator]
-                        ) [Var]
-                      ) [Term]
+                        ) [VarFactor]
+                      ) [FactorTerm]
                     ) [TermExpr]
-                    Addop(
-                    ) [Addop]
-                    Term(
-                      Const(
+                    Add(
+                    ) [Add]
+                    FactorTerm(
+                      NumFactor(
                        2
-                      ) [Const]
-                    ) [Term]
+                      ) [NumFactor]
+                    ) [FactorTerm]
                   ) [AddExpr]
-                ) [Assignment]
-              ) [MatchedStmt]
+                ) [DesignatorAssign]
+              ) [DesignatorStmt]
             ) [Statements]
-            MatchedStmt(
-              Assignment(
+            DesignatorStmt(
+              DesignatorInc(
                 Designator(
                  y
                 ) [Designator]
-                AddExpr(
-                  TermExpr(
-                    Term(
-                      FuncCall(
-                        Designator(
-                         k
-                        ) [Designator]
-                        NoActuals(
-                        ) [NoActuals]
-                      ) [FuncCall]
-                    ) [Term]
-                  ) [TermExpr]
-                  Addop(
-                  ) [Addop]
-                  Term(
-                    Const(
-                     3
-                    ) [Const]
-                  ) [Term]
-                ) [AddExpr]
-              ) [Assignment]
-            ) [MatchedStmt]
+              ) [DesignatorInc]
+            ) [DesignatorStmt]
           ) [Statements]
-          MatchedStmt(
-            PrintStmt(
-              TermExpr(
-                Term(
-                  Var(
-                    Designator(
-                     y
-                    ) [Designator]
-                  ) [Var]
-                ) [Term]
-              ) [TermExpr]
-            ) [PrintStmt]
-          ) [MatchedStmt]
+          PrintStmt(
+            TermExpr(
+              FactorTerm(
+                VarFactor(
+                  Designator(
+                   y
+                  ) [Designator]
+                ) [VarFactor]
+              ) [FactorTerm]
+            ) [TermExpr]
+            NoPrintNum(
+            ) [NoPrintNum]
+          ) [PrintStmt]
         ) [Statements]
-        MatchedStmt(
+        ReturnStmt(
           ReturnExpr(
             TermExpr(
-              Term(
-                Const(
+              FactorTerm(
+                NumFactor(
                  0
-                ) [Const]
-              ) [Term]
+                ) [NumFactor]
+              ) [FactorTerm]
             ) [TermExpr]
           ) [ReturnExpr]
-        ) [MatchedStmt]
+        ) [ReturnStmt]
       ) [Statements]
     ) [MethodDecl]
   ) [MethodDeclarations]
 ) [Program]
-INFO  19:52:25,679 - ===================================
-INFO  19:52:25,682 -  Print count calls = 1
-INFO  19:52:25,682 -  Deklarisanih promenljivih ima = 5
-INFO  19:52:25,682 -  Definisanih konstanti ima = 1
+INFO  03:47:13,153 - ===================================
+INFO  03:47:13,155 -  Print count calls = 1
+INFO  03:47:13,155 -  Deklarisanih promenljivih ima = 5
+INFO  03:47:13,155 -  Definisanih konstanti ima = 1

@@ -65,15 +65,18 @@ terminal Character CHAR;
 terminal IF, ELSE;
 
 nonterminal MethodDeclList, VarDecl;
-nonterminal FormalParamList, FormalParamDecl, FormPars, ActualPars, ActualParamList; 
+nonterminal FormalParamList, FormalParamDecl, FormPars; 
 nonterminal StatementList, Statement, Addop;
-nonterminal Unmatched, Matched;
 
 nonterminal rs.etf.pp1.symboltable.concepts.Obj Program, ProgName, Designator, MethodDecl, MethodTypeName; 
 nonterminal rs.etf.pp1.symboltable.concepts.Struct Type, Term, Expr, Factor, VarDeclList; 
 
 nonterminal DeclList, ConstDecl, ConstInitList, ConstInit, ClassDecl, ClassMethodList, Extends;
 nonterminal AbstractClassDecl, AbstractClassMethodList, AnyMethodDeclList, AbstractMethodDecl, AbstractReturnType;
+nonterminal DesignatorStatement, Assignop, Condition, CondTerm, CondFact, Relop, Mulop;
+nonterminal Else, Return, InitialDesignator, ForCondition, AfterDesignator, PrintNum;
+
+precedence left ELSE;
 
 Program ::= (Program) PROG ProgName:p DeclList LBRACE MethodDeclList RBRACE 
 ;
@@ -179,53 +182,122 @@ StatementList ::= (Statements) StatementList Statement
 				  (NoStmt) /* epsilon */
 				  ;
 
-Statement ::= (MatchedStmt) Matched | (UnmachedStmt) Unmatched ;
-
-Unmatched ::= (UnmatchedIf) IF Expr Statement | (UnmatchedIfElse) IF Expr Matched ELSE Unmatched;
-	
-				  
-Matched ::= (Assignment) Designator:dest EQUAL Expr:e SEMI 
-			  |
-			  (ErrAssignment) Designator EQUAL error SEMI
-			  {: parser.log.debug("Uspesan oporavak od greske pri dodeli vrednosti."); :}
-			  |
-			  (PrintStmt) PRINT LPAREN Expr RPAREN SEMI 
-			  |
-			  (ReturnExpr) RETURN Expr:t SEMI
-			  |
-			  (ReturnNoExpr) RETURN SEMI
-			  | 
-			  (MatchedIf) IF Expr Matched ELSE Matched
-			  |
-			  (ProcCall) Designator:func LPAREN ActualPars RPAREN SEMI
-			  ;
+Statement ::= (DesignatorStmt) DesignatorStatement SEMI
+				|
+				(IfStmt) IF LPAREN Condition RPAREN Statement Else
+				|
+				(ForStmt) FOR LPAREN InitialDesignator SEMI ForCondition SEMI AfterDesignator RPAREN Statement
+				|
+				(BreakStmt) BREAK SEMI
+				|
+				(ContinueStmt) CONTINUE SEMI
+				|
+				(ReturnStmt) Return SEMI
+				|
+				(ReadStmt) READ LPAREN Designator RPAREN SEMI
+				|
+				(PrintStmt) PRINT LPAREN Expr PrintNum RPAREN SEMI
+				|
+				(BlockStmt) LBRACE StatementList RBRACE
+				;
+				
+Else ::= (ElseExists) ELSE Statement
+		|
+		(NoElse)/* epsilon */
+		;
+		
+InitialDesignator ::= (InitialExists) DesignatorStatement
+						|
+						(NoInitial)/* epsilon */
+						;
+						
+AfterDesignator ::= (AfterExists) DesignatorStatement
+					|
+					(NoAfter)/* epsilon */
+					;
+					
+Return ::= (ReturnNoExpr) RETURN
+			|
+			(ReturnExpr) RETURN Expr
+			;
+			
+PrintNum ::= (PrintNumExists) COMMA NUMBER:printNum
+			|
+			(NoPrintNum)/* epsilon */
+			;
+				
+DesignatorStatement ::= (DesignatorAssign) Designator Assignop Expr
+						|
+						(DesignatorInc) Designator INC
+						|
+						(DesignatorDec) Designator DEC
+						;
+						
+Condition ::= (Conditions) Condition OR CondTerm
+				|
+				(SingleCond) CondTerm
+				;
+				
+CondTerm ::= (CondTerms) CondTerm AND CondFact
+			|
+			(SingleCondTerm) CondFact
+			;
+			
+CondFact ::= (CondFactRel) Expr Relop Expr
+			|
+			(CondFactBool) Expr
+			;
 			  
 Expr ::= (AddExpr) Expr:te Addop Term:t
 		 |
 		 (TermExpr) Term:t
 		 ;
 
-Term ::= (Term) Factor:t 
-;
+Term ::= (MulTerm) Term Mulop Factor
+		|
+		(FactorTerm) Factor:t 
+		;
 
-Factor ::= (Const) NUMBER
+Factor ::= (NumFactor) NUMBER:constVal
 			|
-		   (Var) Designator:d
-		    |
-		   (FuncCall) Designator:func LPAREN ActualPars RPAREN
-		   ;
-
-ActualPars ::= (Actuals) ActualParamList 
-				| 
-			   (NoActuals) /* epsilon */ 
-			   ;
-			   
-ActualParamList ::= (ActualParams) ActualParamList COMMA Expr
-					|
-					(ActualParam) Expr
-					;
+			(CharFactor) CHAR:constVal
+			|
+			(BoolFactor) BOOL:constVal
+			|
+		   	(VarFactor) Designator:d
+		   	|
+		   	(NewFactor) NEW Type
+		   	|
+		   	(ParenFactor) LPAREN Expr RPAREN
+		   	;
 
 Designator ::= (Designator) IDENT:name
 ;
 
-Addop ::= (Addop) PLUS ;
+Assignop ::= (Equals) EQUAL
+;
+
+Addop ::= (Add) PLUS
+		|
+		(Subtract) MINUS
+		;
+
+Mulop ::= (Multiply) MUL
+		|
+		(Divide) DIV
+		|
+		(Modulate) MOD
+		;
+		
+Relop ::= (IsEqual) ISEQ
+			|
+			(IsNotEqual) ISNEQ
+			|
+			(Greater) GRT
+			|
+			(Lesser) LESS
+			|
+			(GrtEq) GREQ
+			|
+			(LesEq) LEQ
+			;

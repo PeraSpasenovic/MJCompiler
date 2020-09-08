@@ -2,23 +2,20 @@ package rs.ac.bg.etf.pp1;
 import org.apache.log4j.Logger;
 
 import rs.ac.bg.etf.pp1.ast.AddExpr;
-import rs.ac.bg.etf.pp1.ast.Assignment;
-import rs.ac.bg.etf.pp1.ast.Const;
 import rs.ac.bg.etf.pp1.ast.Designator;
-import rs.ac.bg.etf.pp1.ast.FuncCall;
 import rs.ac.bg.etf.pp1.ast.MethodDecl;
 import rs.ac.bg.etf.pp1.ast.MethodTypeName;
 import rs.ac.bg.etf.pp1.ast.PrintStmt;
-import rs.ac.bg.etf.pp1.ast.ProcCall;
 import rs.ac.bg.etf.pp1.ast.ProgName;
 import rs.ac.bg.etf.pp1.ast.Program;
 import rs.ac.bg.etf.pp1.ast.ReturnExpr;
 import rs.ac.bg.etf.pp1.ast.SyntaxNode;
-import rs.ac.bg.etf.pp1.ast.Term;
+import rs.ac.bg.etf.pp1.ast.FactorTerm;
 import rs.ac.bg.etf.pp1.ast.TermExpr;
 import rs.ac.bg.etf.pp1.ast.Type;
-import rs.ac.bg.etf.pp1.ast.Var;
+import rs.ac.bg.etf.pp1.ast.NumFactor;
 import rs.ac.bg.etf.pp1.ast.VarDecl;
+import rs.ac.bg.etf.pp1.ast.VarFactor;
 import rs.ac.bg.etf.pp1.ast.VisitorAdaptor;
 import rs.etf.pp1.symboltable.Tab;
 import rs.etf.pp1.symboltable.concepts.Obj;
@@ -103,10 +100,10 @@ public class SemanticPass extends VisitorAdaptor {
 		report_info("Obradjuje se funkcija " + methodTypeName.getMethName(), methodTypeName);
 	}
 
-	public void visit(Assignment assignment) {
-		if (!assignment.getExpr().struct.assignableTo(assignment.getDesignator().obj.getType()))
-			report_error("Greska na liniji " + assignment.getLine() + " : " + " nekompatibilni tipovi u dodeli vrednosti ", null);
-	}
+//	public void visit(Assignment assignment) {
+//		if (!assignment.getExpr().struct.assignableTo(assignment.getDesignator().obj.getType()))
+//			report_error("Greska na liniji " + assignment.getLine() + " : " + " nekompatibilni tipovi u dodeli vrednosti ", null);
+//	}
 
 	public void visit(PrintStmt printStmt){
 		printCallCount++;    	
@@ -120,17 +117,17 @@ public class SemanticPass extends VisitorAdaptor {
 		}			  	     	
 	}
 
-	public void visit(ProcCall procCall){
-		Obj func = procCall.getDesignator().obj;
-		if (Obj.Meth == func.getKind()) { 
-			report_info("Pronadjen poziv funkcije " + func.getName() + " na liniji " + procCall.getLine(), null);
-			//RESULT = func.getType();
-		} 
-		else {
-			report_error("Greska na liniji " + procCall.getLine()+" : ime " + func.getName() + " nije funkcija!", null);
-			//RESULT = Tab.noType;
-		}     	
-	}    
+//	public void visit(ProcCall procCall){
+//		Obj func = procCall.getDesignator().obj;
+//		if (Obj.Meth == func.getKind()) { 
+//			report_info("Pronadjen poziv funkcije " + func.getName() + " na liniji " + procCall.getLine(), null);
+//			//RESULT = func.getType();
+//		} 
+//		else {
+//			report_error("Greska na liniji " + procCall.getLine()+" : ime " + func.getName() + " nije funkcija!", null);
+//			//RESULT = Tab.noType;
+//		}     	
+//	}    
 
 	public void visit(AddExpr addExpr) {
 		Struct te = addExpr.getExpr().struct;
@@ -147,30 +144,30 @@ public class SemanticPass extends VisitorAdaptor {
 		termExpr.struct = termExpr.getTerm().struct;
 	}
 
-	public void visit(Term term) {
-		term.struct = term.getFactor().struct;    	
+	public void visit(FactorTerm factorTerm) {
+		factorTerm.struct = factorTerm.getFactor().struct;    	
 	}
 
-	public void visit(Const cnst){
-		cnst.struct = Tab.intType;    	
+	public void visit(NumFactor numFactor){
+		numFactor.struct = Tab.intType;    	
 	}
 	
-	public void visit(Var var) {
-		var.struct = var.getDesignator().obj.getType();
+	public void visit(VarFactor varFactor) {
+		varFactor.struct = varFactor.getDesignator().obj.getType();
 	}
 
-	public void visit(FuncCall funcCall){
-		Obj func = funcCall.getDesignator().obj;
-		if (Obj.Meth == func.getKind()) { 
-			report_info("Pronadjen poziv funkcije " + func.getName() + " na liniji " + funcCall.getLine(), null);
-			funcCall.struct = func.getType();
-		} 
-		else {
-			report_error("Greska na liniji " + funcCall.getLine()+" : ime " + func.getName() + " nije funkcija!", null);
-			funcCall.struct = Tab.noType;
-		}
-
-	}
+//	public void visit(FuncCall funcCall){
+//		Obj func = funcCall.getDesignator().obj;
+//		if (Obj.Meth == func.getKind()) { 
+//			report_info("Pronadjen poziv funkcije " + func.getName() + " na liniji " + funcCall.getLine(), null);
+//			funcCall.struct = func.getType();
+//		} 
+//		else {
+//			report_error("Greska na liniji " + funcCall.getLine()+" : ime " + func.getName() + " nije funkcija!", null);
+//			funcCall.struct = Tab.noType;
+//		}
+//
+//	}
 
 	public void visit(Designator designator){
 		Obj obj = Tab.find(designator.getName());
