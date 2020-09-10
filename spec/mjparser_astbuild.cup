@@ -57,7 +57,7 @@ scan with {:
 terminal PROG, LBRACE, RBRACE, SEMI, LPAREN, RPAREN, COMMA, PRINT, RETURN, EQUAL, VOID;
 terminal BREAK, CLASS, ABSTRACT, CONST, NEW, READ, FOR, EXTENDS, CONTINUE;
 terminal PLUS, MINUS, MUL, DIV, MOD, ISEQ, ISNEQ, GRT, LESS, GREQ, LEQ, AND, OR;
-terminal ADDAS, SUBAS, MULAS, DIVAS, MODAS, INC, DEC, LBRACK, RBRACK;
+terminal ADDAS, SUBAS, MULAS, DIVAS, MODAS, INC, DEC, LBRACK, RBRACK, POINT;
 terminal Integer NUMBER ;
 terminal String IDENT ;
 terminal Boolean BOOL;
@@ -101,10 +101,16 @@ nonterminal InitialDesignator InitialDesignator;
 nonterminal ForCondition ForCondition;
 nonterminal AfterDesignator AfterDesignator;
 nonterminal PrintNum PrintNum;
+nonterminal AddopRight AddopRight;
+nonterminal AddopLeft AddopLeft;
+nonterminal MulopRight MulopRight;
+nonterminal MulopLeft MulopLeft;
+nonterminal VarName VarName;
+nonterminal VarNameList VarNameList;
 
 precedence left ELSE;
 
-Program ::= (Program) PROG ProgName:p DeclList:D1 LBRACE MethodDeclList:M2 RBRACE {: RESULT=new Program(p, D1, M2); RESULT.setLine(pleft); :} 
+Program ::= (Program) PROG ProgName:P1 DeclList:D2 LBRACE MethodDeclList:M3 RBRACE {: RESULT=new Program(P1, D2, M3); RESULT.setLine(P1left); :} 
 ;
 
 ProgName ::= (ProgName) IDENT:pName {: RESULT=new ProgName(pName); RESULT.setLine(pNameleft); :} 
@@ -161,8 +167,22 @@ VarDeclList ::= (VarDeclarations) VarDeclList:V1 VarDecl:V2 {: RESULT=new VarDec
 				(NoVarDecl) {: RESULT=new NoVarDecl(); :}/* epsilon */
 				;
 				
-VarDecl ::= (VarDecl) Type:varType IDENT:varName SEMI {: RESULT=new VarDecl(varType, varName); RESULT.setLine(varTypeleft); :} 
-;
+VarDecl ::= (VarDeclOk) Type:varType VarNameList:V1 SEMI {: RESULT=new VarDeclOk(varType, V1); RESULT.setLine(varTypeleft); :}
+			|
+			(VarDeclError) Type:T1 error SEMI {: RESULT=new VarDeclError(T1); RESULT.setLine(T1left); :}
+			;
+			
+VarNameList ::= (VarNames) VarNameList:V1 COMMA VarName:V2 {: RESULT=new VarNames(V1, V2); RESULT.setLine(V1left); :}
+				|
+				(VarNameError) error COMMA VarName:V1 {: RESULT=new VarNameError(V1); RESULT.setLine(V1left); :}
+				|
+				(VarNameSingle) VarName:V1 {: RESULT=new VarNameSingle(V1); RESULT.setLine(V1left); :}
+				;
+
+VarName ::= (RegVarName) IDENT:varName {: RESULT=new RegVarName(varName); RESULT.setLine(varNameleft); :}
+			|
+			(ArrVarName) IDENT:varName LBRACK RBRACK {: RESULT=new ArrVarName(varName); RESULT.setLine(varNameleft); :}
+			;
 					
 ConstDecl ::= (ConstDecl) CONST Type:T1 ConstInitList:C2 SEMI {: RESULT=new ConstDecl(T1, C2); RESULT.setLine(T1left); :}
 ;
@@ -187,12 +207,13 @@ MethodDeclList ::= (MethodDeclarations) MethodDeclList:M1 MethodDecl:M2 {: RESUL
 					(NoMethodDecl) {: RESULT=new NoMethodDecl(); :}/* epsilon */
 					;
 
-MethodDecl ::= (MethodDecl) MethodTypeName:M1
-			   LPAREN FormPars:F2 RPAREN VarDeclList:V3 LBRACE StatementList:S4 RBRACE {: RESULT=new MethodDecl(M1, F2, V3, S4); RESULT.setLine(M1left); :} 
+MethodDecl ::= (MethodDecl) MethodTypeName:M1 LPAREN FormPars:F2 RPAREN VarDeclList:V3 LBRACE StatementList:S4 RBRACE {: RESULT=new MethodDecl(M1, F2, V3, S4); RESULT.setLine(M1left); :} 
 			   ;
 
-MethodTypeName ::= (MethodTypeName) Type:retType IDENT:methName {: RESULT=new MethodTypeName(retType, methName); RESULT.setLine(retTypeleft); :}
-;
+MethodTypeName ::= (MethodTypeNameType) Type:retType IDENT:methName {: RESULT=new MethodTypeNameType(retType, methName); RESULT.setLine(retTypeleft); :}
+					|
+					(MethodTypeNameVoid) VOID IDENT:methName {: RESULT=new MethodTypeNameVoid(methName); RESULT.setLine(methNameleft); :}
+					;
 
 FormPars ::= (FormParams) FormalParamList:F1 {: RESULT=new FormParams(F1); RESULT.setLine(F1left); :} | (NoFormParam) {: RESULT=new NoFormParam(); :} /* epsilon */ ;
 
@@ -201,7 +222,10 @@ FormalParamList ::= (FormalParamDecls) FormalParamList:F1 COMMA FormalParamDecl:
 					(SingleFormalParamDecl) FormalParamDecl:F1 {: RESULT=new SingleFormalParamDecl(F1); RESULT.setLine(F1left); :}
 					;
 					
-FormalParamDecl ::= (FormalParamDecl) Type:T1 IDENT:I2 {: RESULT=new FormalParamDecl(T1, I2); RESULT.setLine(T1left); :} ;
+FormalParamDecl ::= (FormalParamReg) Type:T1 IDENT:I2 {: RESULT=new FormalParamReg(T1, I2); RESULT.setLine(T1left); :}
+					|
+					(FormalParamArr) Type:T1 IDENT:I2 LBRACK RBRACK {: RESULT=new FormalParamArr(T1, I2); RESULT.setLine(T1left); :}
+					;
 
 StatementList ::= (Statements) StatementList:S1 Statement:S2 {: RESULT=new Statements(S1, S2); RESULT.setLine(S1left); :} 
 					|
@@ -209,6 +233,11 @@ StatementList ::= (Statements) StatementList:S1 Statement:S2 {: RESULT=new State
 				  ;
 
 Statement ::= (DesignatorStmt) DesignatorStatement:D1 SEMI {: RESULT=new DesignatorStmt(D1); RESULT.setLine(D1left); :}
+				|
+				(ErrorStmt) error SEMI:l
+				{:
+					parser.log.error("Izvrsen oporavak od greske pri dodeli vrednosti");
+				:} {: RESULT=new ErrorStmt(); :}
 				|
 				(IfStmt) IF LPAREN Condition:C1 RPAREN Statement:S2 Else:E3 {: RESULT=new IfStmt(C1, S2, E3); RESULT.setLine(C1left); :}
 				|
@@ -275,9 +304,11 @@ CondFact ::= (CondFactRel) Expr:E1 Relop:R2 Expr:E3 {: RESULT=new CondFactRel(E1
 			;
 			  
 Expr ::= (AddExpr) Expr:te Addop:A1 Term:t {: RESULT=new AddExpr(te, A1, t); RESULT.setLine(teleft); :}
-		 |
-		 (TermExpr) Term:t {: RESULT=new TermExpr(t); RESULT.setLine(tleft); :}
-		 ;
+		|
+		(TermExpr) Term:T1 {: RESULT=new TermExpr(T1); RESULT.setLine(T1left); :}
+		|
+		(NegTermExpr) MINUS Term:T1 {: RESULT=new NegTermExpr(T1); RESULT.setLine(T1left); :}
+		;
 
 Term ::= (MulTerm) Term:T1 Mulop:M2 Factor:F3 {: RESULT=new MulTerm(T1, M2, F3); RESULT.setLine(T1left); :}
 		|
@@ -294,26 +325,58 @@ Factor ::= (NumFactor) NUMBER:constVal {: RESULT=new NumFactor(constVal); RESULT
 		   	|
 		   	(NewFactor) NEW Type:T1 {: RESULT=new NewFactor(T1); RESULT.setLine(T1left); :}
 		   	|
+		   	(NewArrFactor) NEW Type:T1 LBRACK Expr:E2 RBRACK {: RESULT=new NewArrFactor(T1, E2); RESULT.setLine(T1left); :}
+		   	|
 		   	(ParenFactor) LPAREN Expr:E1 RPAREN {: RESULT=new ParenFactor(E1); RESULT.setLine(E1left); :}
 		   	;
 
-Designator ::= (Designator) IDENT:name {: RESULT=new Designator(name); RESULT.setLine(nameleft); :}
-;
+Designator ::= (VarDesignator) IDENT:name {: RESULT=new VarDesignator(name); RESULT.setLine(nameleft); :}
+				|
+				(FieldDesignator) IDENT:className POINT IDENT:fieldName {: RESULT=new FieldDesignator(className, fieldName); RESULT.setLine(classNameleft); :}
+				|
+				(ArrDesignator) IDENT:name LBRACK Expr:index RBRACK {: RESULT=new ArrDesignator(name, index); RESULT.setLine(nameleft); :}
+				;
 
 Assignop ::= (Equals) EQUAL {: RESULT=new Equals(); :}
-;
+			|
+			(AddAs) AddopRight:A1 {: RESULT=new AddAs(A1); RESULT.setLine(A1left); :}
+			|
+			(MulAs) MulopRight:M1 {: RESULT=new MulAs(M1); RESULT.setLine(M1left); :}
+			;
+			
+Addop ::= (LeftAddop) AddopLeft:A1 {: RESULT=new LeftAddop(A1); RESULT.setLine(A1left); :}
+			|
+			(RightAddop) AddopRight:A1 {: RESULT=new RightAddop(A1); RESULT.setLine(A1left); :}
+			;
 
-Addop ::= (Add) PLUS {: RESULT=new Add(); :}
+AddopLeft ::= (AddLeft) PLUS {: RESULT=new AddLeft(); :}
 		|
-		(Subtract) MINUS {: RESULT=new Subtract(); :}
+		(SubtractLeft) MINUS {: RESULT=new SubtractLeft(); :}
 		;
+		
+AddopRight ::= (AddRight) ADDAS {: RESULT=new AddRight(); :}
+				|
+				(SubstractRight) SUBAS {: RESULT=new SubstractRight(); :}
+				;
+				
+Mulop ::= (LeftMulop) MulopLeft:M1 {: RESULT=new LeftMulop(M1); RESULT.setLine(M1left); :}
+			|
+			(RightMulop) MulopRight:M1 {: RESULT=new RightMulop(M1); RESULT.setLine(M1left); :}
+			;
 
-Mulop ::= (Multiply) MUL {: RESULT=new Multiply(); :}
+MulopLeft ::= (MultiplyLeft) MUL {: RESULT=new MultiplyLeft(); :}
 		|
-		(Divide) DIV {: RESULT=new Divide(); :}
+		(DivideLeft) DIV {: RESULT=new DivideLeft(); :}
 		|
-		(Modulate) MOD {: RESULT=new Modulate(); :}
+		(ModulateLeft) MOD {: RESULT=new ModulateLeft(); :}
 		;
+		
+MulopRight ::= (MultiplyRight) MULAS {: RESULT=new MultiplyRight(); :}
+				|
+				(DivideRight) DIVAS {: RESULT=new DivideRight(); :}
+				|
+				(ModulateRight) MODAS {: RESULT=new ModulateRight(); :}
+				;
 		
 Relop ::= (IsEqual) ISEQ {: RESULT=new IsEqual(); :}
 			|

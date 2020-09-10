@@ -57,7 +57,7 @@ scan with {:
 terminal PROG, LBRACE, RBRACE, SEMI, LPAREN, RPAREN, COMMA, PRINT, RETURN, EQUAL, VOID;
 terminal BREAK, CLASS, ABSTRACT, CONST, NEW, READ, FOR, EXTENDS, CONTINUE;
 terminal PLUS, MINUS, MUL, DIV, MOD, ISEQ, ISNEQ, GRT, LESS, GREQ, LEQ, AND, OR;
-terminal ADDAS, SUBAS, MULAS, DIVAS, MODAS, INC, DEC, LBRACK, RBRACK;
+terminal ADDAS, SUBAS, MULAS, DIVAS, MODAS, INC, DEC, LBRACK, RBRACK, POINT;
 terminal Integer NUMBER ;
 terminal String IDENT ;
 terminal Boolean BOOL;
@@ -75,10 +75,12 @@ nonterminal DeclList, ConstDecl, ConstInitList, ConstInit, ClassDecl, ClassMetho
 nonterminal AbstractClassDecl, AbstractClassMethodList, AnyMethodDeclList, AbstractMethodDecl, AbstractReturnType;
 nonterminal DesignatorStatement, Assignop, Condition, CondTerm, CondFact, Relop, Mulop;
 nonterminal Else, Return, InitialDesignator, ForCondition, AfterDesignator, PrintNum;
+nonterminal AddopRight, AddopLeft, MulopRight, MulopLeft;
+nonterminal VarName, VarNameList;
 
 precedence left ELSE;
 
-Program ::= (Program) PROG ProgName:p DeclList LBRACE MethodDeclList RBRACE 
+Program ::= (Program) PROG ProgName DeclList LBRACE MethodDeclList RBRACE 
 ;
 
 ProgName ::= (ProgName) IDENT:pName 
@@ -135,8 +137,22 @@ VarDeclList ::= (VarDeclarations) VarDeclList VarDecl
 				(NoVarDecl)/* epsilon */
 				;
 				
-VarDecl ::= (VarDecl) Type:varType IDENT:varName SEMI 
-;
+VarDecl ::= (VarDeclOk) Type:varType VarNameList SEMI
+			|
+			(VarDeclError) Type error SEMI
+			;
+			
+VarNameList ::= (VarNames) VarNameList COMMA VarName
+				|
+				(VarNameError) error COMMA VarName
+				|
+				(VarNameSingle) VarName
+				;
+
+VarName ::= (RegVarName) IDENT:varName
+			|
+			(ArrVarName) IDENT:varName LBRACK RBRACK
+			;
 					
 ConstDecl ::= (ConstDecl) CONST Type ConstInitList SEMI
 ;
@@ -161,12 +177,13 @@ MethodDeclList ::= (MethodDeclarations) MethodDeclList MethodDecl
 					(NoMethodDecl)/* epsilon */
 					;
 
-MethodDecl ::= (MethodDecl) MethodTypeName
-			   LPAREN FormPars RPAREN VarDeclList LBRACE StatementList RBRACE 
+MethodDecl ::= (MethodDecl) MethodTypeName LPAREN FormPars RPAREN VarDeclList LBRACE StatementList RBRACE 
 			   ;
 
-MethodTypeName ::= (MethodTypeName) Type:retType IDENT:methName
-;
+MethodTypeName ::= (MethodTypeNameType) Type:retType IDENT:methName
+					|
+					(MethodTypeNameVoid) VOID IDENT:methName
+					;
 
 FormPars ::= (FormParams) FormalParamList | (NoFormParam) /* epsilon */ ;
 
@@ -175,7 +192,10 @@ FormalParamList ::= (FormalParamDecls) FormalParamList COMMA FormalParamDecl
 					(SingleFormalParamDecl) FormalParamDecl
 					;
 					
-FormalParamDecl ::= (FormalParamDecl) Type IDENT ;
+FormalParamDecl ::= (FormalParamReg) Type IDENT
+					|
+					(FormalParamArr) Type IDENT LBRACK RBRACK
+					;
 
 StatementList ::= (Statements) StatementList Statement 
 					|
@@ -183,6 +203,11 @@ StatementList ::= (Statements) StatementList Statement
 				  ;
 
 Statement ::= (DesignatorStmt) DesignatorStatement SEMI
+				|
+				(ErrorStmt) error SEMI:l
+				{:
+					parser.log.error("Izvrsen oporavak od greske pri dodeli vrednosti");
+				:}
 				|
 				(IfStmt) IF LPAREN Condition RPAREN Statement Else
 				|
@@ -249,9 +274,11 @@ CondFact ::= (CondFactRel) Expr Relop Expr
 			;
 			  
 Expr ::= (AddExpr) Expr:te Addop Term:t
-		 |
-		 (TermExpr) Term:t
-		 ;
+		|
+		(TermExpr) Term
+		|
+		(NegTermExpr) MINUS Term
+		;
 
 Term ::= (MulTerm) Term Mulop Factor
 		|
@@ -268,26 +295,58 @@ Factor ::= (NumFactor) NUMBER:constVal
 		   	|
 		   	(NewFactor) NEW Type
 		   	|
+		   	(NewArrFactor) NEW Type LBRACK Expr RBRACK
+		   	|
 		   	(ParenFactor) LPAREN Expr RPAREN
 		   	;
 
-Designator ::= (Designator) IDENT:name
-;
+Designator ::= (VarDesignator) IDENT:name
+				|
+				(FieldDesignator) IDENT:className POINT IDENT:fieldName
+				|
+				(ArrDesignator) IDENT:name LBRACK Expr:index RBRACK
+				;
 
 Assignop ::= (Equals) EQUAL
-;
+			|
+			(AddAs) AddopRight
+			|
+			(MulAs) MulopRight
+			;
+			
+Addop ::= (LeftAddop) AddopLeft
+			|
+			(RightAddop) AddopRight
+			;
 
-Addop ::= (Add) PLUS
+AddopLeft ::= (AddLeft) PLUS
 		|
-		(Subtract) MINUS
+		(SubtractLeft) MINUS
 		;
+		
+AddopRight ::= (AddRight) ADDAS
+				|
+				(SubstractRight) SUBAS
+				;
+				
+Mulop ::= (LeftMulop) MulopLeft
+			|
+			(RightMulop) MulopRight
+			;
 
-Mulop ::= (Multiply) MUL
+MulopLeft ::= (MultiplyLeft) MUL
 		|
-		(Divide) DIV
+		(DivideLeft) DIV
 		|
-		(Modulate) MOD
+		(ModulateLeft) MOD
 		;
+		
+MulopRight ::= (MultiplyRight) MULAS
+				|
+				(DivideRight) DIVAS
+				|
+				(ModulateRight) MODAS
+				;
 		
 Relop ::= (IsEqual) ISEQ
 			|

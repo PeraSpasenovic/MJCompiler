@@ -80,6 +80,7 @@ import java_cup.runtime.Symbol;
 "}"			{ return new_symbol(sym.RBRACE, yytext()); }
 "["			{ return new_symbol(sym.LBRACK, yytext()); }
 "]"			{ return new_symbol(sym.RBRACK, yytext()); }
+"."			{ return new_symbol(sym.POINT, yytext()); }
 
 <YYINITIAL> "//" 		     { yybegin(COMMENT); }
 <COMMENT> .      { yybegin(COMMENT); }

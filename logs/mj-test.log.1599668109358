@@ -1,0 +1,18 @@
+INFO  18:13:49,040 - Compiling source file: C:\Users\Pera\eclipse-workspace\MJCompiler\test\program.mj
+INFO  18:13:49,065 - #2 program
+INFO  18:13:49,065 - #46 MJProgram
+INFO  18:13:49,065 - #46 int
+INFO  18:13:49,065 - #46 x
+INFO  18:13:49,066 - #5 ;
+INFO  18:13:49,066 - #46 int
+INFO  18:13:49,066 - #46 y
+INFO  18:13:49,066 - #8 ,
+INFO  18:13:49,066 - #46 a
+INFO  18:13:49,066 - #44 .
+ERROR 18:13:49,066 - 
+Sintaksna greska na liniji 2
+INFO  18:13:49,066 - #46 b
+INFO  18:13:49,066 - #5 ;
+INFO  18:13:49,066 - #16 const
+INFO  18:13:49,067 - #46 char
+INFO  18:13:49,067 - #46 pera

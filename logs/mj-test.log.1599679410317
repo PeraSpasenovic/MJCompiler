@@ -1,0 +1,36 @@
+INFO  21:18:15,984 - Compiling source file: C:\Users\Pera\eclipse-workspace\MJCompiler\test\test301.mj
+INFO  21:18:16,013 - #2 program
+INFO  21:18:16,013 - #46 test301
+INFO  21:18:16,013 - #16 const
+INFO  21:18:16,014 - #46 int
+INFO  21:18:16,014 - #46 nula
+INFO  21:18:16,014 - #11 =
+INFO  21:18:16,014 - #45 0
+INFO  21:18:16,014 - #5 ;
+INFO  21:18:16,015 - #16 const
+INFO  21:18:16,015 - #46 int
+INFO  21:18:16,015 - #46 jedan
+INFO  21:18:16,015 - #11 =
+INFO  21:18:16,015 - #45 1
+INFO  21:18:16,015 - #5 ;
+INFO  21:18:16,015 - #16 const
+INFO  21:18:16,015 - #46 int
+INFO  21:18:16,015 - #46 pet
+INFO  21:18:16,015 - #11 =
+INFO  21:18:16,015 - #45 5
+INFO  21:18:16,015 - #5 ;
+INFO  21:18:16,015 - #46 int
+INFO  21:18:16,016 - #46 niz
+INFO  21:18:16,016 - #42 [
+INFO  21:18:16,016 - #43 ]
+INFO  21:18:16,016 - #5 ;
+INFO  21:18:16,016 - #46 char
+INFO  21:18:16,016 - #46 nizch
+INFO  21:18:16,016 - #42 [
+INFO  21:18:16,016 - #43 ]
+INFO  21:18:16,016 - #5 ;
+INFO  21:18:16,016 - #3 {
+INFO  21:18:16,016 - #12 void
+ERROR 21:18:16,016 - 
+Sintaksna greska na liniji 13
+ERROR 21:18:16,016 - Fatalna greska, parsiranje se ne moze nastaviti na liniji 13

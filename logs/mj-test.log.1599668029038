@@ -1,0 +1,438 @@
+INFO  18:11:10,329 - Compiling source file: C:\Users\Pera\eclipse-workspace\MJCompiler\test\program.mj
+INFO  18:11:10,354 - #2 program
+INFO  18:11:10,354 - #46 MJProgram
+INFO  18:11:10,354 - #46 int
+INFO  18:11:10,355 - #46 x
+INFO  18:11:10,355 - #5 ;
+INFO  18:11:10,355 - #46 int
+INFO  18:11:10,355 - #46 y
+INFO  18:11:10,355 - #8 ,
+INFO  18:11:10,355 - #46 a
+INFO  18:11:10,355 - #44 .
+ERROR 18:11:10,355 - 
+Sintaksna greska na liniji 2
+INFO  18:11:10,355 - #46 b
+INFO  18:11:10,355 - #8 ,
+INFO  18:11:10,356 - #46 z
+INFO  18:11:10,356 - #5 ;
+INFO  18:11:10,356 - #16 const
+INFO  18:11:10,356 - #46 char
+INFO  18:11:10,356 - #46 pera
+INFO  18:11:10,356 - #11 =
+INFO  18:11:10,356 - #48 p
+INFO  18:11:10,356 - #5 ;
+INFO  18:11:10,357 - #15 abstract
+INFO  18:11:10,357 - #14 class
+INFO  18:11:10,357 - #46 Tim
+INFO  18:11:10,357 - #20 extends
+INFO  18:11:10,357 - #46 Nesto
+INFO  18:11:10,357 - #3 {
+INFO  18:11:10,357 - #46 int
+INFO  18:11:10,358 - #46 hardver
+INFO  18:11:10,358 - #5 ;
+INFO  18:11:10,358 - #46 int
+INFO  18:11:10,358 - #46 softver
+INFO  18:11:10,358 - #5 ;
+INFO  18:11:10,358 - #3 {
+INFO  18:11:10,358 - #46 int
+INFO  18:11:10,358 - #46 pcb
+INFO  18:11:10,358 - #6 (
+INFO  18:11:10,358 - #7 )
+INFO  18:11:10,359 - #3 {
+INFO  18:11:10,359 - #46 hardver
+INFO  18:11:10,359 - #11 =
+INFO  18:11:10,359 - #45 2
+INFO  18:11:10,359 - #5 ;
+INFO  18:11:10,359 - #46 softver
+INFO  18:11:10,360 - #11 =
+INFO  18:11:10,360 - #45 1
+INFO  18:11:10,360 - #5 ;
+INFO  18:11:10,360 - #4 }
+INFO  18:11:10,360 - #15 abstract
+INFO  18:11:10,360 - #12 void
+INFO  18:11:10,360 - #46 fja
+INFO  18:11:10,360 - #6 (
+INFO  18:11:10,360 - #46 int
+INFO  18:11:10,360 - #46 m
+INFO  18:11:10,360 - #7 )
+INFO  18:11:10,361 - #5 ;
+INFO  18:11:10,361 - #4 }
+INFO  18:11:10,361 - #4 }
+INFO  18:11:10,361 - #3 {
+INFO  18:11:10,361 - #46 int
+INFO  18:11:10,362 - #46 k
+INFO  18:11:10,362 - #6 (
+INFO  18:11:10,362 - #7 )
+INFO  18:11:10,362 - #46 int
+INFO  18:11:10,362 - #46 c
+INFO  18:11:10,362 - #5 ;
+INFO  18:11:10,362 - #3 {
+INFO  18:11:10,362 - #46 c
+INFO  18:11:10,362 - #11 =
+INFO  18:11:10,362 - #45 1
+INFO  18:11:10,362 - #5 ;
+INFO  18:11:10,362 - #10 return
+INFO  18:11:10,362 - #46 c
+INFO  18:11:10,362 - #22 +
+INFO  18:11:10,362 - #45 2
+INFO  18:11:10,363 - #5 ;
+INFO  18:11:10,363 - #4 }
+INFO  18:11:10,363 - #46 int
+INFO  18:11:10,363 - #46 main
+INFO  18:11:10,363 - #6 (
+INFO  18:11:10,363 - #7 )
+INFO  18:11:10,363 - #3 {
+INFO  18:11:10,363 - #46 y
+INFO  18:11:10,363 - #11 =
+INFO  18:11:10,363 - #45 2
+INFO  18:11:10,363 - #5 ;
+INFO  18:11:10,363 - #46 x
+INFO  18:11:10,363 - #11 =
+INFO  18:11:10,363 - #46 y
+INFO  18:11:10,363 - #22 +
+INFO  18:11:10,364 - #45 2
+INFO  18:11:10,364 - #5 ;
+INFO  18:11:10,364 - #46 y
+INFO  18:11:10,364 - #40 ++
+INFO  18:11:10,364 - #5 ;
+INFO  18:11:10,364 - #9 print
+INFO  18:11:10,364 - #6 (
+INFO  18:11:10,364 - #46 y
+INFO  18:11:10,364 - #7 )
+INFO  18:11:10,364 - #5 ;
+INFO  18:11:10,364 - #10 return
+INFO  18:11:10,365 - #45 0
+INFO  18:11:10,365 - #5 ;
+INFO  18:11:10,365 - #4 }
+INFO  18:11:10,365 - #4 }
+INFO  18:11:10,366 - Program(
+  ProgName(
+   MJProgram
+  ) [ProgName]
+  DeclListAbstract(
+    DeclarationsConst(
+      DeclarationsVar(
+        DeclarationsVar(
+          NoDecl(
+          ) [NoDecl]
+          VarDeclOk(
+            Type(
+             int
+            ) [Type]
+            VarNameSingle(
+              RegVarName(
+               x
+              ) [RegVarName]
+            ) [VarNameSingle]
+          ) [VarDeclOk]
+        ) [DeclarationsVar]
+        VarDeclOk(
+          Type(
+           int
+          ) [Type]
+          VarNameError(
+            RegVarName(
+             z
+            ) [RegVarName]
+          ) [VarNameError]
+        ) [VarDeclOk]
+      ) [DeclarationsVar]
+      ConstDecl(
+        Type(
+         char
+        ) [Type]
+        ConstInitSingle(
+          ConstChar(
+           pera
+           p
+          ) [ConstChar]
+        ) [ConstInitSingle]
+      ) [ConstDecl]
+    ) [DeclarationsConst]
+    AbstractClassDecl(
+     Tim
+      DoesExtend(
+        Type(
+         Nesto
+        ) [Type]
+      ) [DoesExtend]
+      VarDeclarations(
+        VarDeclarations(
+          NoVarDecl(
+          ) [NoVarDecl]
+          VarDeclOk(
+            Type(
+             int
+            ) [Type]
+            VarNameSingle(
+              RegVarName(
+               hardver
+              ) [RegVarName]
+            ) [VarNameSingle]
+          ) [VarDeclOk]
+        ) [VarDeclarations]
+        VarDeclOk(
+          Type(
+           int
+          ) [Type]
+          VarNameSingle(
+            RegVarName(
+             softver
+            ) [RegVarName]
+          ) [VarNameSingle]
+        ) [VarDeclOk]
+      ) [VarDeclarations]
+      AbstractClassMethods(
+        AnyMethodAbs(
+          SingleAnyMethodReg(
+            MethodDecl(
+              MethodTypeName(
+                Type(
+                 int
+                ) [Type]
+               pcb
+              ) [MethodTypeName]
+              NoFormParam(
+              ) [NoFormParam]
+              NoVarDecl(
+              ) [NoVarDecl]
+              Statements(
+                Statements(
+                  NoStmt(
+                  ) [NoStmt]
+                  DesignatorStmt(
+                    DesignatorAssign(
+                      VarDesignator(
+                       hardver
+                      ) [VarDesignator]
+                      Equals(
+                      ) [Equals]
+                      TermExpr(
+                        FactorTerm(
+                          NumFactor(
+                           2
+                          ) [NumFactor]
+                        ) [FactorTerm]
+                      ) [TermExpr]
+                    ) [DesignatorAssign]
+                  ) [DesignatorStmt]
+                ) [Statements]
+                DesignatorStmt(
+                  DesignatorAssign(
+                    VarDesignator(
+                     softver
+                    ) [VarDesignator]
+                    Equals(
+                    ) [Equals]
+                    TermExpr(
+                      FactorTerm(
+                        NumFactor(
+                         1
+                        ) [NumFactor]
+                      ) [FactorTerm]
+                    ) [TermExpr]
+                  ) [DesignatorAssign]
+                ) [DesignatorStmt]
+              ) [Statements]
+            ) [MethodDecl]
+          ) [SingleAnyMethodReg]
+          AbstractMethodDecl(
+            AbstractReturnVoid(
+            ) [AbstractReturnVoid]
+           fja
+            FormParams(
+              SingleFormalParamDecl(
+                FormalParamReg(
+                  Type(
+                   int
+                  ) [Type]
+                 m
+                ) [FormalParamReg]
+              ) [SingleFormalParamDecl]
+            ) [FormParams]
+          ) [AbstractMethodDecl]
+        ) [AnyMethodAbs]
+      ) [AbstractClassMethods]
+    ) [AbstractClassDecl]
+  ) [DeclListAbstract]
+  MethodDeclarations(
+    MethodDeclarations(
+      NoMethodDecl(
+      ) [NoMethodDecl]
+      MethodDecl(
+        MethodTypeName(
+          Type(
+           int
+          ) [Type]
+         k
+        ) [MethodTypeName]
+        NoFormParam(
+        ) [NoFormParam]
+        VarDeclarations(
+          NoVarDecl(
+          ) [NoVarDecl]
+          VarDeclOk(
+            Type(
+             int
+            ) [Type]
+            VarNameSingle(
+              RegVarName(
+               c
+              ) [RegVarName]
+            ) [VarNameSingle]
+          ) [VarDeclOk]
+        ) [VarDeclarations]
+        Statements(
+          Statements(
+            NoStmt(
+            ) [NoStmt]
+            DesignatorStmt(
+              DesignatorAssign(
+                VarDesignator(
+                 c
+                ) [VarDesignator]
+                Equals(
+                ) [Equals]
+                TermExpr(
+                  FactorTerm(
+                    NumFactor(
+                     1
+                    ) [NumFactor]
+                  ) [FactorTerm]
+                ) [TermExpr]
+              ) [DesignatorAssign]
+            ) [DesignatorStmt]
+          ) [Statements]
+          ReturnStmt(
+            ReturnExpr(
+              AddExpr(
+                TermExpr(
+                  FactorTerm(
+                    VarFactor(
+                      VarDesignator(
+                       c
+                      ) [VarDesignator]
+                    ) [VarFactor]
+                  ) [FactorTerm]
+                ) [TermExpr]
+                LeftAddop(
+                  AddLeft(
+                  ) [AddLeft]
+                ) [LeftAddop]
+                FactorTerm(
+                  NumFactor(
+                   2
+                  ) [NumFactor]
+                ) [FactorTerm]
+              ) [AddExpr]
+            ) [ReturnExpr]
+          ) [ReturnStmt]
+        ) [Statements]
+      ) [MethodDecl]
+    ) [MethodDeclarations]
+    MethodDecl(
+      MethodTypeName(
+        Type(
+         int
+        ) [Type]
+       main
+      ) [MethodTypeName]
+      NoFormParam(
+      ) [NoFormParam]
+      NoVarDecl(
+      ) [NoVarDecl]
+      Statements(
+        Statements(
+          Statements(
+            Statements(
+              Statements(
+                NoStmt(
+                ) [NoStmt]
+                DesignatorStmt(
+                  DesignatorAssign(
+                    VarDesignator(
+                     y
+                    ) [VarDesignator]
+                    Equals(
+                    ) [Equals]
+                    TermExpr(
+                      FactorTerm(
+                        NumFactor(
+                         2
+                        ) [NumFactor]
+                      ) [FactorTerm]
+                    ) [TermExpr]
+                  ) [DesignatorAssign]
+                ) [DesignatorStmt]
+              ) [Statements]
+              DesignatorStmt(
+                DesignatorAssign(
+                  VarDesignator(
+                   x
+                  ) [VarDesignator]
+                  Equals(
+                  ) [Equals]
+                  AddExpr(
+                    TermExpr(
+                      FactorTerm(
+                        VarFactor(
+                          VarDesignator(
+                           y
+                          ) [VarDesignator]
+                        ) [VarFactor]
+                      ) [FactorTerm]
+                    ) [TermExpr]
+                    LeftAddop(
+                      AddLeft(
+                      ) [AddLeft]
+                    ) [LeftAddop]
+                    FactorTerm(
+                      NumFactor(
+                       2
+                      ) [NumFactor]
+                    ) [FactorTerm]
+                  ) [AddExpr]
+                ) [DesignatorAssign]
+              ) [DesignatorStmt]
+            ) [Statements]
+            DesignatorStmt(
+              DesignatorInc(
+                VarDesignator(
+                 y
+                ) [VarDesignator]
+              ) [DesignatorInc]
+            ) [DesignatorStmt]
+          ) [Statements]
+          PrintStmt(
+            TermExpr(
+              FactorTerm(
+                VarFactor(
+                  VarDesignator(
+                   y
+                  ) [VarDesignator]
+                ) [VarFactor]
+              ) [FactorTerm]
+            ) [TermExpr]
+            NoPrintNum(
+            ) [NoPrintNum]
+          ) [PrintStmt]
+        ) [Statements]
+        ReturnStmt(
+          ReturnExpr(
+            TermExpr(
+              FactorTerm(
+                NumFactor(
+                 0
+                ) [NumFactor]
+              ) [FactorTerm]
+            ) [TermExpr]
+          ) [ReturnExpr]
+        ) [ReturnStmt]
+      ) [Statements]
+    ) [MethodDecl]
+  ) [MethodDeclarations]
+) [Program]
+INFO  18:11:10,366 - ===================================
+INFO  18:11:10,367 -  Print count calls = 1
+INFO  18:11:10,367 -  Deklarisanih promenljivih ima = 0
+INFO  18:11:10,367 -  Definisanih konstanti ima = 1
