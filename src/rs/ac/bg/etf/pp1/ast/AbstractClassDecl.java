@@ -1,6 +1,6 @@
 // generated with ast extension for cup
 // version 0.8
-// 10/8/2020 4:4:4
+// 14/8/2020 3:2:57
 
 
 package rs.ac.bg.etf.pp1.ast;
@@ -9,13 +9,14 @@ public class AbstractClassDecl implements SyntaxNode {
 
     private SyntaxNode parent;
     private int line;
-    private String absClassName;
+    private AbstractClassName AbstractClassName;
     private Extends Extends;
     private VarDeclList VarDeclList;
     private AbstractClassMethodList AbstractClassMethodList;
 
-    public AbstractClassDecl (String absClassName, Extends Extends, VarDeclList VarDeclList, AbstractClassMethodList AbstractClassMethodList) {
-        this.absClassName=absClassName;
+    public AbstractClassDecl (AbstractClassName AbstractClassName, Extends Extends, VarDeclList VarDeclList, AbstractClassMethodList AbstractClassMethodList) {
+        this.AbstractClassName=AbstractClassName;
+        if(AbstractClassName!=null) AbstractClassName.setParent(this);
         this.Extends=Extends;
         if(Extends!=null) Extends.setParent(this);
         this.VarDeclList=VarDeclList;
@@ -24,12 +25,12 @@ public class AbstractClassDecl implements SyntaxNode {
         if(AbstractClassMethodList!=null) AbstractClassMethodList.setParent(this);
     }
 
-    public String getAbsClassName() {
-        return absClassName;
+    public AbstractClassName getAbstractClassName() {
+        return AbstractClassName;
     }
 
-    public void setAbsClassName(String absClassName) {
-        this.absClassName=absClassName;
+    public void setAbstractClassName(AbstractClassName AbstractClassName) {
+        this.AbstractClassName=AbstractClassName;
     }
 
     public Extends getExtends() {
@@ -77,6 +78,7 @@ public class AbstractClassDecl implements SyntaxNode {
     }
 
     public void childrenAccept(Visitor visitor) {
+        if(AbstractClassName!=null) AbstractClassName.accept(visitor);
         if(Extends!=null) Extends.accept(visitor);
         if(VarDeclList!=null) VarDeclList.accept(visitor);
         if(AbstractClassMethodList!=null) AbstractClassMethodList.accept(visitor);
@@ -84,12 +86,14 @@ public class AbstractClassDecl implements SyntaxNode {
 
     public void traverseTopDown(Visitor visitor) {
         accept(visitor);
+        if(AbstractClassName!=null) AbstractClassName.traverseTopDown(visitor);
         if(Extends!=null) Extends.traverseTopDown(visitor);
         if(VarDeclList!=null) VarDeclList.traverseTopDown(visitor);
         if(AbstractClassMethodList!=null) AbstractClassMethodList.traverseTopDown(visitor);
     }
 
     public void traverseBottomUp(Visitor visitor) {
+        if(AbstractClassName!=null) AbstractClassName.traverseBottomUp(visitor);
         if(Extends!=null) Extends.traverseBottomUp(visitor);
         if(VarDeclList!=null) VarDeclList.traverseBottomUp(visitor);
         if(AbstractClassMethodList!=null) AbstractClassMethodList.traverseBottomUp(visitor);
@@ -101,7 +105,10 @@ public class AbstractClassDecl implements SyntaxNode {
         buffer.append(tab);
         buffer.append("AbstractClassDecl(\n");
 
-        buffer.append(" "+tab+absClassName);
+        if(AbstractClassName!=null)
+            buffer.append(AbstractClassName.toString("  "+tab));
+        else
+            buffer.append(tab+"  null");
         buffer.append("\n");
 
         if(Extends!=null)

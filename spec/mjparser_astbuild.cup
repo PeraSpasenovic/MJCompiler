@@ -74,7 +74,7 @@ nonterminal Statement Statement;
 nonterminal Addop Addop;
 
 nonterminal rs.etf.pp1.symboltable.concepts.Obj Program, ProgName, Designator, MethodDecl, MethodTypeName; 
-nonterminal rs.etf.pp1.symboltable.concepts.Struct Type, Term, Expr, Factor, VarDeclList; 
+nonterminal rs.etf.pp1.symboltable.concepts.Struct Type, Term, Expr, Factor, VarDeclList, ClassName, AbstractClassName; 
 
 nonterminal DeclList DeclList;
 nonterminal ConstDecl ConstDecl;
@@ -127,7 +127,10 @@ DeclList ::= (DeclarationsVar) DeclList:D1 VarDecl:V2 {: RESULT=new Declarations
 			(NoDecl) {: RESULT=new NoDecl(); :}/* epsilon */ 
 			;
 			
-ClassDecl ::= (ClassDecl) CLASS IDENT:className Extends:E1 LBRACE VarDeclList:V2 ClassMethodList:C3 RBRACE {: RESULT=new ClassDecl(className, E1, V2, C3); RESULT.setLine(classNameleft); :}
+ClassDecl ::= (ClassDecl) CLASS ClassName:C1 Extends:E2 LBRACE VarDeclList:V3 ClassMethodList:C4 RBRACE {: RESULT=new ClassDecl(C1, E2, V3, C4); RESULT.setLine(C1left); :}
+;
+
+ClassName ::= (ClassName) IDENT:name {: RESULT=new ClassName(name); RESULT.setLine(nameleft); :}
 ;
 
 ClassMethodList ::= (ClassMethods) LBRACE MethodDeclList:M1 RBRACE {: RESULT=new ClassMethods(M1); RESULT.setLine(M1left); :}
@@ -135,7 +138,10 @@ ClassMethodList ::= (ClassMethods) LBRACE MethodDeclList:M1 RBRACE {: RESULT=new
 				(NoClassMethods) {: RESULT=new NoClassMethods(); :} /* epsilon */
 				;
 			
-AbstractClassDecl ::= (AbstractClassDecl) ABSTRACT CLASS IDENT:absClassName Extends:E1 LBRACE VarDeclList:V2 AbstractClassMethodList:A3 RBRACE {: RESULT=new AbstractClassDecl(absClassName, E1, V2, A3); RESULT.setLine(absClassNameleft); :}
+AbstractClassDecl ::= (AbstractClassDecl) ABSTRACT CLASS AbstractClassName:A1 Extends:E2 LBRACE VarDeclList:V3 AbstractClassMethodList:A4 RBRACE {: RESULT=new AbstractClassDecl(A1, E2, V3, A4); RESULT.setLine(A1left); :}
+;
+
+AbstractClassName ::= (AbstractClassName) IDENT:name {: RESULT=new AbstractClassName(name); RESULT.setLine(nameleft); :}
 ;
 
 AbstractClassMethodList ::= (AbstractClassMethods) LBRACE AnyMethodDeclList:A1 RBRACE {: RESULT=new AbstractClassMethods(A1); RESULT.setLine(A1left); :}
@@ -303,16 +309,20 @@ CondFact ::= (CondFactRel) Expr:E1 Relop:R2 Expr:E3 {: RESULT=new CondFactRel(E1
 			(CondFactBool) Expr:E1 {: RESULT=new CondFactBool(E1); RESULT.setLine(E1left); :}
 			;
 			  
-Expr ::= (AddExpr) Expr:te Addop:A1 Term:t {: RESULT=new AddExpr(te, A1, t); RESULT.setLine(teleft); :}
+Expr ::= (AddRightExpr) Expr:E1 AddopRight:A2 Term:T3 {: RESULT=new AddRightExpr(E1, A2, T3); RESULT.setLine(E1left); :}
+		|
+		(AddLeftExpr) Expr:E1 AddopLeft:A2 Term:T3 {: RESULT=new AddLeftExpr(E1, A2, T3); RESULT.setLine(E1left); :}
 		|
 		(TermExpr) Term:T1 {: RESULT=new TermExpr(T1); RESULT.setLine(T1left); :}
 		|
 		(NegTermExpr) MINUS Term:T1 {: RESULT=new NegTermExpr(T1); RESULT.setLine(T1left); :}
 		;
 
-Term ::= (MulTerm) Term:T1 Mulop:M2 Factor:F3 {: RESULT=new MulTerm(T1, M2, F3); RESULT.setLine(T1left); :}
+Term ::= (MulRightTerm) Term:T1 MulopRight:M2 Factor:F3 {: RESULT=new MulRightTerm(T1, M2, F3); RESULT.setLine(T1left); :}
 		|
-		(FactorTerm) Factor:t {: RESULT=new FactorTerm(t); RESULT.setLine(tleft); :} 
+		(MulLeftTerm) Term:T1 MulopLeft:M2 Factor:F3 {: RESULT=new MulLeftTerm(T1, M2, F3); RESULT.setLine(T1left); :}
+		|
+		(FactorTerm) Factor:F1 {: RESULT=new FactorTerm(F1); RESULT.setLine(F1left); :}
 		;
 
 Factor ::= (NumFactor) NUMBER:constVal {: RESULT=new NumFactor(constVal); RESULT.setLine(constValleft); :}
@@ -334,7 +344,7 @@ Designator ::= (VarDesignator) IDENT:name {: RESULT=new VarDesignator(name); RES
 				|
 				(FieldDesignator) IDENT:className POINT IDENT:fieldName {: RESULT=new FieldDesignator(className, fieldName); RESULT.setLine(classNameleft); :}
 				|
-				(ArrDesignator) IDENT:name LBRACK Expr:index RBRACK {: RESULT=new ArrDesignator(name, index); RESULT.setLine(nameleft); :}
+				(ArrDesignator) IDENT:name LBRACK Expr:E1 RBRACK {: RESULT=new ArrDesignator(name, E1); RESULT.setLine(nameleft); :}
 				;
 
 Assignop ::= (Equals) EQUAL {: RESULT=new Equals(); :}

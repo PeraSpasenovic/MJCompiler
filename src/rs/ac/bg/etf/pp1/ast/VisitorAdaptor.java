@@ -1,6 +1,6 @@
 // generated with ast extension for cup
 // version 0.8
-// 10/8/2020 4:4:4
+// 14/8/2020 3:2:57
 
 
 package rs.ac.bg.etf.pp1.ast;
@@ -82,10 +82,12 @@ public abstract class VisitorAdaptor implements Visitor {
     public void visit(CharFactor CharFactor) { visit(); }
     public void visit(NumFactor NumFactor) { visit(); }
     public void visit(FactorTerm FactorTerm) { visit(); }
-    public void visit(MulTerm MulTerm) { visit(); }
+    public void visit(MulLeftTerm MulLeftTerm) { visit(); }
+    public void visit(MulRightTerm MulRightTerm) { visit(); }
     public void visit(NegTermExpr NegTermExpr) { visit(); }
     public void visit(TermExpr TermExpr) { visit(); }
-    public void visit(AddExpr AddExpr) { visit(); }
+    public void visit(AddLeftExpr AddLeftExpr) { visit(); }
+    public void visit(AddRightExpr AddRightExpr) { visit(); }
     public void visit(CondFactBool CondFactBool) { visit(); }
     public void visit(CondFactRel CondFactRel) { visit(); }
     public void visit(SingleCondTerm SingleCondTerm) { visit(); }
@@ -155,9 +157,11 @@ public abstract class VisitorAdaptor implements Visitor {
     public void visit(AnyMethodReg AnyMethodReg) { visit(); }
     public void visit(NoAbstractClassMethods NoAbstractClassMethods) { visit(); }
     public void visit(AbstractClassMethods AbstractClassMethods) { visit(); }
+    public void visit(AbstractClassName AbstractClassName) { visit(); }
     public void visit(AbstractClassDecl AbstractClassDecl) { visit(); }
     public void visit(NoClassMethods NoClassMethods) { visit(); }
     public void visit(ClassMethods ClassMethods) { visit(); }
+    public void visit(ClassName ClassName) { visit(); }
     public void visit(ClassDecl ClassDecl) { visit(); }
     public void visit(NoDecl NoDecl) { visit(); }
     public void visit(DeclListAbstract DeclListAbstract) { visit(); }

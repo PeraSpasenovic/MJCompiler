@@ -69,7 +69,7 @@ nonterminal FormalParamList, FormalParamDecl, FormPars;
 nonterminal StatementList, Statement, Addop;
 
 nonterminal rs.etf.pp1.symboltable.concepts.Obj Program, ProgName, Designator, MethodDecl, MethodTypeName; 
-nonterminal rs.etf.pp1.symboltable.concepts.Struct Type, Term, Expr, Factor, VarDeclList; 
+nonterminal rs.etf.pp1.symboltable.concepts.Struct Type, Term, Expr, Factor, VarDeclList, ClassName, AbstractClassName; 
 
 nonterminal DeclList, ConstDecl, ConstInitList, ConstInit, ClassDecl, ClassMethodList, Extends;
 nonterminal AbstractClassDecl, AbstractClassMethodList, AnyMethodDeclList, AbstractMethodDecl, AbstractReturnType;
@@ -97,7 +97,10 @@ DeclList ::= (DeclarationsVar) DeclList VarDecl
 			(NoDecl)/* epsilon */ 
 			;
 			
-ClassDecl ::= (ClassDecl) CLASS IDENT:className Extends LBRACE VarDeclList ClassMethodList RBRACE
+ClassDecl ::= (ClassDecl) CLASS ClassName Extends LBRACE VarDeclList ClassMethodList RBRACE
+;
+
+ClassName ::= (ClassName) IDENT:name
 ;
 
 ClassMethodList ::= (ClassMethods) LBRACE MethodDeclList RBRACE
@@ -105,7 +108,10 @@ ClassMethodList ::= (ClassMethods) LBRACE MethodDeclList RBRACE
 				(NoClassMethods) /* epsilon */
 				;
 			
-AbstractClassDecl ::= (AbstractClassDecl) ABSTRACT CLASS IDENT:absClassName Extends LBRACE VarDeclList AbstractClassMethodList RBRACE
+AbstractClassDecl ::= (AbstractClassDecl) ABSTRACT CLASS AbstractClassName Extends LBRACE VarDeclList AbstractClassMethodList RBRACE
+;
+
+AbstractClassName ::= (AbstractClassName) IDENT:name
 ;
 
 AbstractClassMethodList ::= (AbstractClassMethods) LBRACE AnyMethodDeclList RBRACE
@@ -273,16 +279,20 @@ CondFact ::= (CondFactRel) Expr Relop Expr
 			(CondFactBool) Expr
 			;
 			  
-Expr ::= (AddExpr) Expr:te Addop Term:t
+Expr ::= (AddRightExpr) Expr AddopRight Term
+		|
+		(AddLeftExpr) Expr AddopLeft Term
 		|
 		(TermExpr) Term
 		|
 		(NegTermExpr) MINUS Term
 		;
 
-Term ::= (MulTerm) Term Mulop Factor
+Term ::= (MulRightTerm) Term MulopRight Factor
 		|
-		(FactorTerm) Factor:t 
+		(MulLeftTerm) Term MulopLeft Factor
+		|
+		(FactorTerm) Factor
 		;
 
 Factor ::= (NumFactor) NUMBER:constVal
@@ -304,7 +314,7 @@ Designator ::= (VarDesignator) IDENT:name
 				|
 				(FieldDesignator) IDENT:className POINT IDENT:fieldName
 				|
-				(ArrDesignator) IDENT:name LBRACK Expr:index RBRACK
+				(ArrDesignator) IDENT:name LBRACK Expr RBRACK
 				;
 
 Assignop ::= (Equals) EQUAL

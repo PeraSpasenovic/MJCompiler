@@ -1,21 +1,21 @@
 // generated with ast extension for cup
 // version 0.8
-// 10/8/2020 4:4:4
+// 14/8/2020 3:2:57
 
 
 package rs.ac.bg.etf.pp1.ast;
 
-public class AddExpr extends Expr {
+public class AddRightExpr extends Expr {
 
     private Expr Expr;
-    private Addop Addop;
+    private AddopRight AddopRight;
     private Term Term;
 
-    public AddExpr (Expr Expr, Addop Addop, Term Term) {
+    public AddRightExpr (Expr Expr, AddopRight AddopRight, Term Term) {
         this.Expr=Expr;
         if(Expr!=null) Expr.setParent(this);
-        this.Addop=Addop;
-        if(Addop!=null) Addop.setParent(this);
+        this.AddopRight=AddopRight;
+        if(AddopRight!=null) AddopRight.setParent(this);
         this.Term=Term;
         if(Term!=null) Term.setParent(this);
     }
@@ -28,12 +28,12 @@ public class AddExpr extends Expr {
         this.Expr=Expr;
     }
 
-    public Addop getAddop() {
-        return Addop;
+    public AddopRight getAddopRight() {
+        return AddopRight;
     }
 
-    public void setAddop(Addop Addop) {
-        this.Addop=Addop;
+    public void setAddopRight(AddopRight AddopRight) {
+        this.AddopRight=AddopRight;
     }
 
     public Term getTerm() {
@@ -50,20 +50,20 @@ public class AddExpr extends Expr {
 
     public void childrenAccept(Visitor visitor) {
         if(Expr!=null) Expr.accept(visitor);
-        if(Addop!=null) Addop.accept(visitor);
+        if(AddopRight!=null) AddopRight.accept(visitor);
         if(Term!=null) Term.accept(visitor);
     }
 
     public void traverseTopDown(Visitor visitor) {
         accept(visitor);
         if(Expr!=null) Expr.traverseTopDown(visitor);
-        if(Addop!=null) Addop.traverseTopDown(visitor);
+        if(AddopRight!=null) AddopRight.traverseTopDown(visitor);
         if(Term!=null) Term.traverseTopDown(visitor);
     }
 
     public void traverseBottomUp(Visitor visitor) {
         if(Expr!=null) Expr.traverseBottomUp(visitor);
-        if(Addop!=null) Addop.traverseBottomUp(visitor);
+        if(AddopRight!=null) AddopRight.traverseBottomUp(visitor);
         if(Term!=null) Term.traverseBottomUp(visitor);
         accept(visitor);
     }
@@ -71,7 +71,7 @@ public class AddExpr extends Expr {
     public String toString(String tab) {
         StringBuffer buffer=new StringBuffer();
         buffer.append(tab);
-        buffer.append("AddExpr(\n");
+        buffer.append("AddRightExpr(\n");
 
         if(Expr!=null)
             buffer.append(Expr.toString("  "+tab));
@@ -79,8 +79,8 @@ public class AddExpr extends Expr {
             buffer.append(tab+"  null");
         buffer.append("\n");
 
-        if(Addop!=null)
-            buffer.append(Addop.toString("  "+tab));
+        if(AddopRight!=null)
+            buffer.append(AddopRight.toString("  "+tab));
         else
             buffer.append(tab+"  null");
         buffer.append("\n");
@@ -92,7 +92,7 @@ public class AddExpr extends Expr {
         buffer.append("\n");
 
         buffer.append(tab);
-        buffer.append(") [AddExpr]");
+        buffer.append(") [AddRightExpr]");
         return buffer.toString();
     }
 }
