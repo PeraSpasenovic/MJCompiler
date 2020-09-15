@@ -9,13 +9,15 @@ program MJProgram
 		return c+2;
 	}
 	
-	int main() {
-		y = 2;
-		x = y + 2;
-		y ++;
-		print(y);
-		bla = new int[2];
-		blabla = new int[4];
-		return 0;
+	int main() 
+	int proba;
+	{
+		bla = new int[3];
+		proba = 3;
+		bla[1] += 2;
+	
+		print(proba);
+		print('y');
+		print(false);
 	}
 }

@@ -1,0 +1,294 @@
+INFO  21:46:02,485 - Compiling source file: C:\Users\Pera\eclipse-workspace\MJCompiler\test\program.mj
+INFO  21:46:02,511 - #2 program
+INFO  21:46:02,511 - #46 MJProgram
+INFO  21:46:02,511 - #46 int
+INFO  21:46:02,512 - #46 x
+INFO  21:46:02,512 - #5 ;
+INFO  21:46:02,512 - #46 int
+INFO  21:46:02,512 - #46 y
+INFO  21:46:02,512 - #5 ;
+INFO  21:46:02,512 - #16 const
+INFO  21:46:02,512 - #46 char
+INFO  21:46:02,513 - #46 pera
+INFO  21:46:02,513 - #11 =
+INFO  21:46:02,513 - #48 p
+INFO  21:46:02,513 - #5 ;
+INFO  21:46:02,513 - #46 int
+INFO  21:46:02,513 - #46 bla
+INFO  21:46:02,513 - #42 [
+INFO  21:46:02,513 - #43 ]
+INFO  21:46:02,513 - #8 ,
+INFO  21:46:02,513 - #46 blabla
+INFO  21:46:02,513 - #42 [
+INFO  21:46:02,514 - #43 ]
+INFO  21:46:02,514 - #5 ;
+INFO  21:46:02,514 - #3 {
+INFO  21:46:02,514 - #46 int
+INFO  21:46:02,514 - #46 k
+INFO  21:46:02,514 - #6 (
+INFO  21:46:02,514 - #7 )
+INFO  21:46:02,515 - #46 int
+INFO  21:46:02,515 - #46 c
+INFO  21:46:02,515 - #5 ;
+INFO  21:46:02,515 - #3 {
+INFO  21:46:02,515 - #46 c
+INFO  21:46:02,515 - #11 =
+INFO  21:46:02,515 - #45 1
+INFO  21:46:02,516 - #5 ;
+INFO  21:46:02,516 - #10 return
+INFO  21:46:02,516 - #46 c
+INFO  21:46:02,516 - #22 +
+INFO  21:46:02,516 - #45 2
+INFO  21:46:02,517 - #5 ;
+INFO  21:46:02,517 - #4 }
+INFO  21:46:02,517 - #46 int
+INFO  21:46:02,517 - #46 main
+INFO  21:46:02,517 - #6 (
+INFO  21:46:02,517 - #7 )
+INFO  21:46:02,517 - #46 int
+INFO  21:46:02,517 - #46 proba
+INFO  21:46:02,517 - #5 ;
+INFO  21:46:02,517 - #3 {
+INFO  21:46:02,517 - #46 proba
+INFO  21:46:02,517 - #11 =
+INFO  21:46:02,517 - #45 3
+INFO  21:46:02,517 - #5 ;
+INFO  21:46:02,517 - #9 print
+INFO  21:46:02,517 - #6 (
+INFO  21:46:02,517 - #46 proba
+INFO  21:46:02,517 - #7 )
+INFO  21:46:02,517 - #5 ;
+INFO  21:46:02,517 - #9 print
+INFO  21:46:02,518 - #6 (
+INFO  21:46:02,518 - #48 y
+INFO  21:46:02,518 - #7 )
+INFO  21:46:02,518 - #5 ;
+INFO  21:46:02,518 - #9 print
+INFO  21:46:02,518 - #6 (
+INFO  21:46:02,518 - #47 false
+INFO  21:46:02,518 - #7 )
+INFO  21:46:02,518 - #5 ;
+INFO  21:46:02,518 - #4 }
+INFO  21:46:02,518 - #4 }
+INFO  21:46:02,519 - Program(
+  ProgName(
+   MJProgram
+  ) [ProgName]
+  DeclarationsVar(
+    DeclarationsConst(
+      DeclarationsVar(
+        DeclarationsVar(
+          NoDecl(
+          ) [NoDecl]
+          VarDeclOk(
+            Type(
+             int
+            ) [Type]
+            VarNameSingle(
+              RegVarName(
+               x
+              ) [RegVarName]
+            ) [VarNameSingle]
+          ) [VarDeclOk]
+        ) [DeclarationsVar]
+        VarDeclOk(
+          Type(
+           int
+          ) [Type]
+          VarNameSingle(
+            RegVarName(
+             y
+            ) [RegVarName]
+          ) [VarNameSingle]
+        ) [VarDeclOk]
+      ) [DeclarationsVar]
+      ConstDecl(
+        Type(
+         char
+        ) [Type]
+        ConstInitSingle(
+          ConstChar(
+           pera
+           p
+          ) [ConstChar]
+        ) [ConstInitSingle]
+      ) [ConstDecl]
+    ) [DeclarationsConst]
+    VarDeclOk(
+      Type(
+       int
+      ) [Type]
+      VarNames(
+        VarNameSingle(
+          ArrVarName(
+           bla
+          ) [ArrVarName]
+        ) [VarNameSingle]
+        ArrVarName(
+         blabla
+        ) [ArrVarName]
+      ) [VarNames]
+    ) [VarDeclOk]
+  ) [DeclarationsVar]
+  MethodDeclarations(
+    MethodDeclarations(
+      NoMethodDecl(
+      ) [NoMethodDecl]
+      MethodDecl(
+        MethodTypeNameType(
+          Type(
+           int
+          ) [Type]
+         k
+        ) [MethodTypeNameType]
+        NoFormParam(
+        ) [NoFormParam]
+        VarDeclarations(
+          NoVarDecl(
+          ) [NoVarDecl]
+          VarDeclOk(
+            Type(
+             int
+            ) [Type]
+            VarNameSingle(
+              RegVarName(
+               c
+              ) [RegVarName]
+            ) [VarNameSingle]
+          ) [VarDeclOk]
+        ) [VarDeclarations]
+        Statements(
+          Statements(
+            NoStmt(
+            ) [NoStmt]
+            DesignatorStmt(
+              DesignatorAssign(
+                VarDesignator(
+                 c
+                ) [VarDesignator]
+                Equals(
+                ) [Equals]
+                TermExpr(
+                  FactorTerm(
+                    NumFactor(
+                     1
+                    ) [NumFactor]
+                  ) [FactorTerm]
+                ) [TermExpr]
+              ) [DesignatorAssign]
+            ) [DesignatorStmt]
+          ) [Statements]
+          ReturnStmt(
+            ReturnExpr(
+              AddLeftExpr(
+                TermExpr(
+                  FactorTerm(
+                    VarFactor(
+                      VarDesignator(
+                       c
+                      ) [VarDesignator]
+                    ) [VarFactor]
+                  ) [FactorTerm]
+                ) [TermExpr]
+                AddLeft(
+                ) [AddLeft]
+                FactorTerm(
+                  NumFactor(
+                   2
+                  ) [NumFactor]
+                ) [FactorTerm]
+              ) [AddLeftExpr]
+            ) [ReturnExpr]
+          ) [ReturnStmt]
+        ) [Statements]
+      ) [MethodDecl]
+    ) [MethodDeclarations]
+    MethodDecl(
+      MethodTypeNameType(
+        Type(
+         int
+        ) [Type]
+       main
+      ) [MethodTypeNameType]
+      NoFormParam(
+      ) [NoFormParam]
+      VarDeclarations(
+        NoVarDecl(
+        ) [NoVarDecl]
+        VarDeclOk(
+          Type(
+           int
+          ) [Type]
+          VarNameSingle(
+            RegVarName(
+             proba
+            ) [RegVarName]
+          ) [VarNameSingle]
+        ) [VarDeclOk]
+      ) [VarDeclarations]
+      Statements(
+        Statements(
+          Statements(
+            Statements(
+              NoStmt(
+              ) [NoStmt]
+              DesignatorStmt(
+                DesignatorAssign(
+                  VarDesignator(
+                   proba
+                  ) [VarDesignator]
+                  Equals(
+                  ) [Equals]
+                  TermExpr(
+                    FactorTerm(
+                      NumFactor(
+                       3
+                      ) [NumFactor]
+                    ) [FactorTerm]
+                  ) [TermExpr]
+                ) [DesignatorAssign]
+              ) [DesignatorStmt]
+            ) [Statements]
+            PrintStmt(
+              TermExpr(
+                FactorTerm(
+                  VarFactor(
+                    VarDesignator(
+                     proba
+                    ) [VarDesignator]
+                  ) [VarFactor]
+                ) [FactorTerm]
+              ) [TermExpr]
+              NoPrintNum(
+              ) [NoPrintNum]
+            ) [PrintStmt]
+          ) [Statements]
+          PrintStmt(
+            TermExpr(
+              FactorTerm(
+                CharFactor(
+                 y
+                ) [CharFactor]
+              ) [FactorTerm]
+            ) [TermExpr]
+            NoPrintNum(
+            ) [NoPrintNum]
+          ) [PrintStmt]
+        ) [Statements]
+        PrintStmt(
+          TermExpr(
+            FactorTerm(
+              BoolFactor(
+                false
+              ) [BoolFactor]
+            ) [FactorTerm]
+          ) [TermExpr]
+          NoPrintNum(
+          ) [NoPrintNum]
+        ) [PrintStmt]
+      ) [Statements]
+    ) [MethodDecl]
+  ) [MethodDeclarations]
+) [Program]
+INFO  21:46:02,519 - ===================================
+INFO  21:46:02,525 - Prevodjenje uspesno zavrseno!

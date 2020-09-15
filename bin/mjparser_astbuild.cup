@@ -73,7 +73,7 @@ nonterminal StatementList StatementList;
 nonterminal Statement Statement;
 nonterminal Addop Addop;
 
-nonterminal rs.etf.pp1.symboltable.concepts.Obj Program, ProgName, Designator, MethodDecl, MethodTypeName; 
+nonterminal rs.etf.pp1.symboltable.concepts.Obj Program, ProgName, Designator, MethodDecl, MethodTypeName, ArrayName; 
 nonterminal rs.etf.pp1.symboltable.concepts.Struct Type, Term, Expr, Factor, VarDeclList, ClassName, AbstractClassName; 
 
 nonterminal DeclList DeclList;
@@ -331,7 +331,7 @@ Factor ::= (NumFactor) NUMBER:constVal {: RESULT=new NumFactor(constVal); RESULT
 			|
 			(BoolFactor) BOOL:constVal {: RESULT=new BoolFactor(constVal); RESULT.setLine(constValleft); :}
 			|
-		   	(VarFactor) Designator:d {: RESULT=new VarFactor(d); RESULT.setLine(dleft); :}
+		   	(VarFactor) Designator:D1 {: RESULT=new VarFactor(D1); RESULT.setLine(D1left); :}
 		   	|
 		   	(NewFactor) NEW Type:T1 {: RESULT=new NewFactor(T1); RESULT.setLine(T1left); :}
 		   	|
@@ -344,8 +344,11 @@ Designator ::= (VarDesignator) IDENT:name {: RESULT=new VarDesignator(name); RES
 				|
 				(FieldDesignator) IDENT:className POINT IDENT:fieldName {: RESULT=new FieldDesignator(className, fieldName); RESULT.setLine(classNameleft); :}
 				|
-				(ArrDesignator) IDENT:name LBRACK Expr:E1 RBRACK {: RESULT=new ArrDesignator(name, E1); RESULT.setLine(nameleft); :}
+				(ArrDesignator) ArrayName:A1 LBRACK Expr:E2 RBRACK {: RESULT=new ArrDesignator(A1, E2); RESULT.setLine(A1left); :}
 				;
+				
+ArrayName ::= (ArrayName) IDENT:name {: RESULT=new ArrayName(name); RESULT.setLine(nameleft); :}
+;
 
 Assignop ::= (Equals) EQUAL {: RESULT=new Equals(); :}
 			|

@@ -156,17 +156,22 @@ public class SemanticAnalyzer extends VisitorAdaptor {
     }
     
     public void visit (ArrDesignator arrDesignator) {
-    	Obj obj = Tab.find(arrDesignator.getName());
+    	Obj obj = Tab.find(arrDesignator.getArrayName().getName());
     	if (arrDesignator.getExpr().struct.getKind() != Struct.Int) {
 			report_error("Greska: Indeks niza nije celobrojna vrednost! ", arrDesignator);    		
     	}
+    	arrDesignator.obj = new Obj(Obj.Elem, "", obj.getType().getElemType());
+    }
+    
+    public void visit (ArrayName arrayName) {
+    	Obj obj = Tab.find(arrayName.getName());
     	if(obj == Tab.noObj){
-			report_error("Greska: Ime "+ arrDesignator.getName()+" nije deklarisano! ", arrDesignator);
+			report_error("Greska: Ime "+ arrayName.getName() +" nije deklarisano! ", arrayName);
     	}
     	if (obj.getType().getKind() != Struct.Array) {
-    		report_error("Greska: "+ arrDesignator.getName()+" nije ime niza! ", arrDesignator);
+    		report_error("Greska: "+ arrayName.getName() +" nije ime niza! ", arrayName);
     	}
-    	arrDesignator.obj = obj;
+    	arrayName.obj = obj;
     }
     
     public void visit (NumFactor numFactor) {
@@ -191,7 +196,7 @@ public class SemanticAnalyzer extends VisitorAdaptor {
     
     public void visit (NewArrFactor newFactor) {
     	if (newFactor.getExpr().struct.getKind() != Struct.Int) {
-			report_error("Greska: Broj elemenata niza nije celobrojna vrednost!", newFactor);    		
+			report_error("Greska: Broj elemenata niza mora biti celobrojna vrednost!", newFactor);    		
     	}
     	newFactor.struct = new Struct(Struct.Array);
     	newFactor.struct.setElementType(newFactor.getType().struct);
@@ -205,7 +210,7 @@ public class SemanticAnalyzer extends VisitorAdaptor {
     	SyntaxNode parent = factorTerm.getParent();
     	SyntaxNode child = factorTerm.getFactor();
     	if (parent.getClass() == MulRightTerm.class && child.getClass() != VarFactor.class) {
-    		report_error("Greska: Levi operand dodele nije promenljiva, element niza ili polje objekta!", factorTerm);
+    		report_error("Greska: Levi operand dodele mora biti promenljiva, element niza ili polje objekta!", factorTerm);
     	}
     	factorTerm.struct = factorTerm.getFactor().struct;
     }
@@ -214,6 +219,9 @@ public class SemanticAnalyzer extends VisitorAdaptor {
     	if (mulTerm.getFactor().struct != Tab.intType || mulTerm.getTerm().struct != Tab.intType) {
     		report_error("Greska: Operandi moraju biti celobrojne vrednosti!", mulTerm);
     	}
+    	if (mulTerm.getParent().getClass() == MulRightTerm.class) {
+    		report_error("Greska: Levi operand dodele mora biti promenljiva, element niza ili polje objekta!", mulTerm);
+    	}
     	mulTerm.struct = Tab.intType;
     }
     
@@ -221,21 +229,24 @@ public class SemanticAnalyzer extends VisitorAdaptor {
     	if (mulTerm.getFactor().struct != Tab.intType || mulTerm.getTerm().struct != Tab.intType) {
     		report_error("Greska: Operandi moraju biti celobrojne vrednosti!", mulTerm);
     	}
+    	if (mulTerm.getParent().getClass() == MulRightTerm.class) {
+    		report_error("Greska: Levi operand dodele mora biti promenljiva, element niza ili polje objekta!", mulTerm);
+    	}
     	mulTerm.struct = Tab.intType;
     }
     
     public void visit (TermExpr expr) {
     	SyntaxNode parent = expr.getParent();
     	SyntaxNode child = expr.getTerm();
-    	if (parent.getClass() == AddRightExpr.class || parent.getClass() == AddLeftExpr.class) {
+    	if (parent.getClass() == AddRightExpr.class) {
     		if (child.getClass() == MulRightTerm.class || child.getClass() == MulLeftTerm.class) {
-    			report_error("Greska: Levi operand dodele nije promenljiva, element niza ili polje objekta!", expr);
+    			report_error("Greska: Levi operand dodele mora biti promenljiva, element niza ili polje objekta!", expr);
     		}
     		else {
     			FactorTerm factorTerm = (FactorTerm) expr.getTerm();
     			if (factorTerm.getFactor().getClass() != VarFactor.class) {
-    				report_error("Greska: Levi operand dodele nije promenljiva, element niza ili polje objekta!", expr);
-    			}
+    				report_error("Greska: Levi operand dodele mora biti promenljiva, element niza ili polje objekta!", expr);
+    			}    		
     		}
     	}
     	expr.struct = expr.getTerm().struct;
@@ -243,10 +254,10 @@ public class SemanticAnalyzer extends VisitorAdaptor {
     
     public void visit (NegTermExpr expr) {
     	if (expr.getTerm().struct != Tab.intType) {
-    		report_error("Greska: Clan aritmetickog izraza nije celobrojna vrednost!", expr);
+    		report_error("Greska: Clan aritmetickog izraza mora biti celobrojna vrednost!", expr);
     	}
     	if (expr.getParent().getClass() == AddRightExpr.class) {
-    		report_error("Greska: Levi operand dodele nije promenljiva, element niza ili polje objekta!", expr);
+    		report_error("Greska: Levi operand dodele mora biti promenljiva, element niza ili polje objekta!", expr);
     	}
     	expr.struct = Tab.intType;
     }
@@ -273,13 +284,13 @@ public class SemanticAnalyzer extends VisitorAdaptor {
     
     public void visit (DesignatorInc stmt) {
     	if (stmt.getDesignator().obj.getType() != Tab.intType) {
-    		report_error("Greska: Operand inkrementiranja nije celobrojna vrednost!", stmt);
+    		report_error("Greska: Operand inkrementiranja mora biti celobrojna vrednost!", stmt);
     	}
     }
     
     public void visit (DesignatorDec stmt) {
     	if (stmt.getDesignator().obj.getType() != Tab.intType) {
-    		report_error("Greska: Operand inkrementiranja nije celobrojna vrednost!", stmt);
+    		report_error("Greska: Operand inkrementiranja mora biti celobrojna vrednost!", stmt);
     	}
     }
     
@@ -361,6 +372,19 @@ public class SemanticAnalyzer extends VisitorAdaptor {
     public void visit (AbstractClassDecl classDecl) {
     	Tab.chainLocalSymbols(classDecl.getAbstractClassName().struct);
     	Tab.closeScope();
+    }
+    
+    public void visit(PrintStmt print) {
+    	if(print.getExpr().struct != Tab.intType && print.getExpr().struct!= Tab.charType && print.getExpr().struct!= boolType) {
+    		report_error("Greska : Operand instrukcije print mora biti osnovnog tipa!", print);
+    	}
+	}
+    
+    public void visit (ReadStmt readStmt) {
+    	Obj obj = readStmt.getDesignator().obj;
+    	if (obj.getType() != Tab.intType && obj.getType() != Tab.intType && obj.getType() != boolType) {
+    		report_error("Greska : Operand instrukcije read mora biti osnovnog tipa!", readStmt);
+    	}
     }
 }
 

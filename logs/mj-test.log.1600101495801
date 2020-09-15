@@ -1,0 +1,255 @@
+INFO  18:35:18,874 - Compiling source file: C:\Users\Pera\eclipse-workspace\MJCompiler\test\program.mj
+INFO  18:35:18,901 - #2 program
+INFO  18:35:18,901 - #46 MJProgram
+INFO  18:35:18,901 - #46 int
+INFO  18:35:18,901 - #46 x
+INFO  18:35:18,902 - #5 ;
+INFO  18:35:18,902 - #46 int
+INFO  18:35:18,902 - #46 y
+INFO  18:35:18,902 - #5 ;
+INFO  18:35:18,902 - #16 const
+INFO  18:35:18,902 - #46 char
+INFO  18:35:18,902 - #46 pera
+INFO  18:35:18,902 - #11 =
+INFO  18:35:18,902 - #48 p
+INFO  18:35:18,902 - #5 ;
+INFO  18:35:18,902 - #46 int
+INFO  18:35:18,903 - #46 bla
+INFO  18:35:18,903 - #42 [
+INFO  18:35:18,903 - #43 ]
+INFO  18:35:18,903 - #8 ,
+INFO  18:35:18,903 - #46 blabla
+INFO  18:35:18,903 - #42 [
+INFO  18:35:18,903 - #43 ]
+INFO  18:35:18,903 - #5 ;
+INFO  18:35:18,903 - #3 {
+INFO  18:35:18,903 - #46 int
+INFO  18:35:18,904 - #46 k
+INFO  18:35:18,904 - #6 (
+INFO  18:35:18,904 - #7 )
+INFO  18:35:18,904 - #46 int
+INFO  18:35:18,904 - #46 c
+INFO  18:35:18,904 - #5 ;
+INFO  18:35:18,905 - #3 {
+INFO  18:35:18,905 - #46 c
+INFO  18:35:18,905 - #11 =
+INFO  18:35:18,905 - #45 1
+INFO  18:35:18,905 - #5 ;
+INFO  18:35:18,905 - #10 return
+INFO  18:35:18,906 - #46 c
+INFO  18:35:18,906 - #22 +
+INFO  18:35:18,906 - #45 2
+INFO  18:35:18,906 - #5 ;
+INFO  18:35:18,906 - #4 }
+INFO  18:35:18,906 - #46 int
+INFO  18:35:18,907 - #46 main
+INFO  18:35:18,907 - #6 (
+INFO  18:35:18,907 - #7 )
+INFO  18:35:18,907 - #3 {
+INFO  18:35:18,907 - #9 print
+INFO  18:35:18,907 - #6 (
+INFO  18:35:18,907 - #45 1
+INFO  18:35:18,907 - #7 )
+INFO  18:35:18,907 - #5 ;
+INFO  18:35:18,907 - #9 print
+INFO  18:35:18,907 - #6 (
+INFO  18:35:18,907 - #48 y
+INFO  18:35:18,907 - #7 )
+INFO  18:35:18,908 - #5 ;
+INFO  18:35:18,908 - #9 print
+INFO  18:35:18,908 - #6 (
+INFO  18:35:18,908 - #47 false
+INFO  18:35:18,908 - #7 )
+INFO  18:35:18,908 - #5 ;
+INFO  18:35:18,908 - #4 }
+INFO  18:35:18,908 - #4 }
+INFO  18:35:18,909 - Program(
+  ProgName(
+   MJProgram
+  ) [ProgName]
+  DeclarationsVar(
+    DeclarationsConst(
+      DeclarationsVar(
+        DeclarationsVar(
+          NoDecl(
+          ) [NoDecl]
+          VarDeclOk(
+            Type(
+             int
+            ) [Type]
+            VarNameSingle(
+              RegVarName(
+               x
+              ) [RegVarName]
+            ) [VarNameSingle]
+          ) [VarDeclOk]
+        ) [DeclarationsVar]
+        VarDeclOk(
+          Type(
+           int
+          ) [Type]
+          VarNameSingle(
+            RegVarName(
+             y
+            ) [RegVarName]
+          ) [VarNameSingle]
+        ) [VarDeclOk]
+      ) [DeclarationsVar]
+      ConstDecl(
+        Type(
+         char
+        ) [Type]
+        ConstInitSingle(
+          ConstChar(
+           pera
+           p
+          ) [ConstChar]
+        ) [ConstInitSingle]
+      ) [ConstDecl]
+    ) [DeclarationsConst]
+    VarDeclOk(
+      Type(
+       int
+      ) [Type]
+      VarNames(
+        VarNameSingle(
+          ArrVarName(
+           bla
+          ) [ArrVarName]
+        ) [VarNameSingle]
+        ArrVarName(
+         blabla
+        ) [ArrVarName]
+      ) [VarNames]
+    ) [VarDeclOk]
+  ) [DeclarationsVar]
+  MethodDeclarations(
+    MethodDeclarations(
+      NoMethodDecl(
+      ) [NoMethodDecl]
+      MethodDecl(
+        MethodTypeNameType(
+          Type(
+           int
+          ) [Type]
+         k
+        ) [MethodTypeNameType]
+        NoFormParam(
+        ) [NoFormParam]
+        VarDeclarations(
+          NoVarDecl(
+          ) [NoVarDecl]
+          VarDeclOk(
+            Type(
+             int
+            ) [Type]
+            VarNameSingle(
+              RegVarName(
+               c
+              ) [RegVarName]
+            ) [VarNameSingle]
+          ) [VarDeclOk]
+        ) [VarDeclarations]
+        Statements(
+          Statements(
+            NoStmt(
+            ) [NoStmt]
+            DesignatorStmt(
+              DesignatorAssign(
+                VarDesignator(
+                 c
+                ) [VarDesignator]
+                Equals(
+                ) [Equals]
+                TermExpr(
+                  FactorTerm(
+                    NumFactor(
+                     1
+                    ) [NumFactor]
+                  ) [FactorTerm]
+                ) [TermExpr]
+              ) [DesignatorAssign]
+            ) [DesignatorStmt]
+          ) [Statements]
+          ReturnStmt(
+            ReturnExpr(
+              AddLeftExpr(
+                TermExpr(
+                  FactorTerm(
+                    VarFactor(
+                      VarDesignator(
+                       c
+                      ) [VarDesignator]
+                    ) [VarFactor]
+                  ) [FactorTerm]
+                ) [TermExpr]
+                AddLeft(
+                ) [AddLeft]
+                FactorTerm(
+                  NumFactor(
+                   2
+                  ) [NumFactor]
+                ) [FactorTerm]
+              ) [AddLeftExpr]
+            ) [ReturnExpr]
+          ) [ReturnStmt]
+        ) [Statements]
+      ) [MethodDecl]
+    ) [MethodDeclarations]
+    MethodDecl(
+      MethodTypeNameType(
+        Type(
+         int
+        ) [Type]
+       main
+      ) [MethodTypeNameType]
+      NoFormParam(
+      ) [NoFormParam]
+      NoVarDecl(
+      ) [NoVarDecl]
+      Statements(
+        Statements(
+          Statements(
+            NoStmt(
+            ) [NoStmt]
+            PrintStmt(
+              TermExpr(
+                FactorTerm(
+                  NumFactor(
+                   1
+                  ) [NumFactor]
+                ) [FactorTerm]
+              ) [TermExpr]
+              NoPrintNum(
+              ) [NoPrintNum]
+            ) [PrintStmt]
+          ) [Statements]
+          PrintStmt(
+            TermExpr(
+              FactorTerm(
+                CharFactor(
+                 y
+                ) [CharFactor]
+              ) [FactorTerm]
+            ) [TermExpr]
+            NoPrintNum(
+            ) [NoPrintNum]
+          ) [PrintStmt]
+        ) [Statements]
+        PrintStmt(
+          TermExpr(
+            FactorTerm(
+              BoolFactor(
+                false
+              ) [BoolFactor]
+            ) [FactorTerm]
+          ) [TermExpr]
+          NoPrintNum(
+          ) [NoPrintNum]
+        ) [PrintStmt]
+      ) [Statements]
+    ) [MethodDecl]
+  ) [MethodDeclarations]
+) [Program]
+INFO  18:35:18,909 - ===================================
+INFO  18:35:18,915 - Prevodjenje uspesno zavrseno!

@@ -68,7 +68,7 @@ nonterminal MethodDeclList, VarDecl;
 nonterminal FormalParamList, FormalParamDecl, FormPars; 
 nonterminal StatementList, Statement, Addop;
 
-nonterminal rs.etf.pp1.symboltable.concepts.Obj Program, ProgName, Designator, MethodDecl, MethodTypeName; 
+nonterminal rs.etf.pp1.symboltable.concepts.Obj Program, ProgName, Designator, MethodDecl, MethodTypeName, ArrayName; 
 nonterminal rs.etf.pp1.symboltable.concepts.Struct Type, Term, Expr, Factor, VarDeclList, ClassName, AbstractClassName; 
 
 nonterminal DeclList, ConstDecl, ConstInitList, ConstInit, ClassDecl, ClassMethodList, Extends;
@@ -301,7 +301,7 @@ Factor ::= (NumFactor) NUMBER:constVal
 			|
 			(BoolFactor) BOOL:constVal
 			|
-		   	(VarFactor) Designator:d
+		   	(VarFactor) Designator
 		   	|
 		   	(NewFactor) NEW Type
 		   	|
@@ -314,8 +314,11 @@ Designator ::= (VarDesignator) IDENT:name
 				|
 				(FieldDesignator) IDENT:className POINT IDENT:fieldName
 				|
-				(ArrDesignator) IDENT:name LBRACK Expr RBRACK
+				(ArrDesignator) ArrayName LBRACK Expr RBRACK
 				;
+				
+ArrayName ::= (ArrayName) IDENT:name
+;
 
 Assignop ::= (Equals) EQUAL
 			|
