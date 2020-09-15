@@ -219,7 +219,7 @@ public class CodeGenerator extends VisitorAdaptor {
 			}
 		}
 		if (designator.getDesignator() instanceof ArrDesignator) {
-			Code.put(Code.dup2);
+			Code.put(Code.dup_x2);
 		}
 		else {
 			Code.put(Code.dup);
@@ -248,7 +248,7 @@ public class CodeGenerator extends VisitorAdaptor {
 			Code.put(Code.sub);
 		}
 		if (designator.getDesignator() instanceof ArrDesignator) {
-			Code.put(Code.dup2);
+			Code.put(Code.dup_x2);
 		}
 		else {
 			Code.put(Code.dup);

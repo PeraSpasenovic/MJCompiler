@@ -13,11 +13,14 @@ program MJProgram
 	int proba;
 	{
 		bla = new int[3];
+		bla[0] = 2;
+		bla[1] = 6;
 		proba = 3;
-		bla[1] += 2;
+		bla[1] += bla[0] *= bla[1];
 	
 		print(proba);
-		print('y');
+		print(pera);
+		print(bla[1]);
 		print(false);
 	}
 }
